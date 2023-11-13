@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせフォーム</title>
+    <link rel="stylesheet" href="./terms_of_service.css">
+</head>
+<body>
+    <div class="form-container">
+        <p>当サイトへのお問い合わせはこちらにお願いします。</p>
+        <p>下記に必要事項をご記入の上、お問い合わせください。</p>
+        <!--<p>「<span class="highlighted-text">*必須</span>」は必須項目です。</p>-->
+        <h2>お問い合わせフォーム</h2>
+        <form action="process.php" method="post">
+            <label for="account-name">アカウント名<span class="highlighted-text">*必須</span></label>
+            <input type="text" id="account-name" name="account-name" style="width: 90%;" required>
+            <br>
+
+            <label for="email">メールアドレス<span class="highlighted-text">*必須</span></label>
+            <input type="email" id="email" name="email" style="width: 90%;" required>
+            <br>
+
+            <label for="phone">電話番号</label>
+            <input type="tel" id="phone" name="phone" style="width: 90%;">
+            <br>
+
+            <label for="message">内容<span class="highlighted-text">*必須</span></label>
+            <textarea id="message" name="message" style="width: 90%;" required></textarea>
+            <br>
+
+            <input type="submit" value="送信" class="submit-button">
+        </form>
+        
+    </div>
+</body>
+</html>
