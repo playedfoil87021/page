@@ -1,0 +1,13 @@
+.text-container {
+    width: 400px; /* テキストコンテナの幅を調整 */
+    height: 700px; /* テキストコンテナの高さを調整 */
+    background-color: #f0f0f0; /* 背景色を設定 */
+    border: 2px solid #333; /* ボーダーを設定 */
+    border-radius: 10px; /* 角丸を設定 */
+    padding: 20px; /* 内側の余白を設定 */
+}
+
+.text {
+    font-size: 30px; /* テキストのフォントサイズを設定 */
+    line-height: 1.5; /* 行間を設定 */
+}

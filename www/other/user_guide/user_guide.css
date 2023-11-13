@@ -1,0 +1,38 @@
+.accordion-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    border: none;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-button:hover {
+    background-color: #0056b3;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion-content p {
+    margin: 10px 0;
+}
+
+.arrow-icon {
+    font-size: 20px;
+    transition: transform 0.43s ease;
+}
+
+.accordion-button.active .arrow-icon {
+    transform: rotate(180deg); /* 三角アイコンを回転 */
+}
