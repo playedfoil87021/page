@@ -41,7 +41,7 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
     <div>性別</div>
     <div>
       <input type="radio" name="gender" value="0" <?php if ($gender1 == "0")
-        echo 'checked' ?>>hoge
+        echo 'checked' ?>>hoge1
 
         <input type="radio" name="gender" value="1" <?php if ($gender1 == "1")
         echo 'checked' ?>>fuga
