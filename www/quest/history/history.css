@@ -1,28 +1,38 @@
-nav{
-    display: none;
+.accordion-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    border: none;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
 }
 
-.nav-open{
-    padding: 15px;
-	color: #fff;
-	font-size: 20px;
-	background: #2073c8;
-	position: relative;
+.accordion-button:hover {
+    background-color: #0056b3;
 }
 
-.nav-open::before{
-    /*close*/
-    content: "▼";
-    position: absolute;
-    right: 20pt;
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
-.nav-open.active::before{
-    content: "▲";
+.accordion-content p {
+    margin: 10px 0;
 }
 
-ul{
-    list-style: none;
-    padding-left: 3%;
-    background-color: bisque;
+.arrow-icon {
+    font-size: 20px;
+    transition: transform 0.43s ease;
+}
+
+.accordion-button.active .arrow-icon {
+    transform: rotate(180deg); /* 三角アイコンを回転 */
 }
