@@ -1,4 +1,4 @@
-<?php
+<?php //旧input1.php
 session_start();
 
 // フォームからセッションに格納
