@@ -6,7 +6,7 @@
     <title>クエスト受注履歴</title>
     <link rel="stylesheet" href="./history.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="./report.js"></script>
+    <script src="./history.js"></script>
 </head>
 <body>
     <object data="../move.html" type=""></object>
