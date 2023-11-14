@@ -1,8 +1,8 @@
 <?php
 // MySQLサーバーへの接続パラメータの設定
-$servername = "localhost";
+$servername = "localhost:65233";
 $username = "root";
-$password = "mysql";
+$password = "P2L13foJQeebl3Jl";
 $dbname = "questwalker";
 
 // MySQLデータベースに接続
