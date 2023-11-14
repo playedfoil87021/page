@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>クエスト受注履歴</title>
-    <link rel="stylesheet" href="./report.css">
+    <link rel="stylesheet" href="./history.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="./report.js"></script>
 </head>
