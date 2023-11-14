@@ -1,3 +1,15 @@
+<?php //旧input1.php
+session_start();
+
+// フォームからセッションに格納
+$accountName = isset($_SESSION['accountName']) ? $_SESSION['accountName'] : '';
+$accountId = isset($_SESSION['accountId']) ? $_SESSION['accountId'] : '';
+$mailAddress = isset($_SESSION['mailAddress']) ? $_SESSION['mailAddress'] : '';
+$phoneNumber = isset($_SESSION['phoneNumber']) ? $_SESSION['phoneNumber'] : '';
+$password1 = isset($_SESSION['password']) ? $_SESSION['password'] : '';
+$gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
+?>
+
 <!DOCTYPE html>
 <head>
     <title>HobbyConnect</title>
@@ -21,6 +33,7 @@
     <form method="post">
         <div>
             <label for="category">部門</label>
+            
         </div>
         <div>
             <label for="genre">ジャンル</label>
