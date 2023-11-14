@@ -1,4 +1,4 @@
-$(function () {
+/*$(function () {
     $('.nav-open').click(function () {
         $(this).toggleClass('active');
         $(this).next('nav').slideToggle();
@@ -23,6 +23,20 @@ document.addEventListener("DOMContentLoaded", function () {
     changePt.innerHTML = basicPt[0] + bonusPt[0] + beforePt[0];
     
 });
+*/
+
+function toggleAccordion(buttonId, contentId) {
+    var button = document.getElementById(buttonId);
+    var content = document.getElementById(contentId);
+
+    if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        button.classList.remove("active");
+    } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        button.classList.add("active");
+    }
+}
 
 //unity
 //年齢
