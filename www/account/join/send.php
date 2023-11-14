@@ -2,9 +2,9 @@
 try {
 
   //DB名、ユーザー名、パスワードを変数に格納
-  $dsn = 'mysql:dbname=user_schema;host=localhost;charset=utf8';
+  $dsn = 'mysql:dbname=user_schema;host=localhost:65233;charset=utf8';
   $user = 'root';
-  $password = 'mysql';
+  $password = 'P2L13foJQeebl3Jl';
  
   $PDO = new PDO($dsn, $user, $password); //PDOでMySQLのデータベースに接続
   $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //PDOのエラーレポートを表示

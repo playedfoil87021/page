@@ -14,7 +14,7 @@ $err_msg = "";
 
 //③データが渡ってきた場合の処理
 try {
-$db = new PDO('mysql:host=localhost; dbname=questwalker','root','mysql');
+$db = new PDO('mysql:host=localhost:65233; dbname=questwalker','root','P2L13foJQeebl3Jl');
 $sql = 'select count(*) from acount_list where account_id=? and pass_wd=?';
 $stmt = $db->prepare($sql);
 $stmt->execute(array($username1,$hashedPassword));

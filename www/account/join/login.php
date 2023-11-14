@@ -11,9 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = password_hash($inputPassword, PASSWORD_BCRYPT);
 
     // データベースに接続
-    $dsn = 'mysql:dbname=questwalker;host=localhost;charset=utf8';
+    $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
     $user = 'root';
-    $password = 'mysql';
+    $password = 'P2L13foJQeebl3Jl';
 
     try {
         $PDO = new PDO($dsn, $user, $password);
