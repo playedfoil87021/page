@@ -2,7 +2,7 @@
 try {
 
   //DB名、ユーザー名、パスワードを変数に格納
-  $dsn = 'mysql:dbname=user_schema;host=localhost;charset=utf8';
+  $dsn = 'mysql:dbname=user_schema;host=localhost:65233;charset=utf8';
   $user = 'root';
   $password = 'P2L13foJQeebl3Jl';
  
