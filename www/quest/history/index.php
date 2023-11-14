@@ -9,7 +9,7 @@
     <script src="./report.js"></script>
 </head>
 <body>
-    <iframe src="../move.html" frameborder="0"></iframe>
+    <object data="../move.html" type=""></object>
     <p class="nav-open">クエスト名</p>
     <nav>
         <ul>
