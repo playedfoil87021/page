@@ -15,9 +15,11 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
 <head>
     <title>HobbyConnect</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./RecuQuest.css">
     <link rel="shortcut icon" href="./img/favicon.ico">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="js/select2.min.js"></script>
+    <link rel="stylesheet" href="./RecuQuest.css">
     <script src="./RecuQuest.js"></script>
 </head>
 <nav>
@@ -37,8 +39,8 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
     <form method="post" action="process_form.php">
         <div>
             <label for="category">部門</label>
-            <select id="category_select">
-                <option value="0"></option>
+            <select class="category_select" style="width:128px;">
+                <option value=""></option>
                 <option value="1">hoge</option>
                 <option value="2">ホゲ</option>
                 <option value="3">fuga</option>
