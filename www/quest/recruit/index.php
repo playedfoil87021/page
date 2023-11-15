@@ -2,7 +2,7 @@
 session_start();
 
 // フォームからセッションに格納
-$questTypeSes = isset($_SESSION['quesTypeSes']) ? $_SESSION['questTypeSes'] : '';
+$questCategorySes = isset($_SESSION['questCategorySes']) ? $_SESSION['questCategorySes'] : '';
 $accountId = isset($_SESSION['accountId']) ? $_SESSION['accountId'] : '';
 $mailAddress = isset($_SESSION['mailAddress']) ? $_SESSION['mailAddress'] : '';
 $phoneNumber = isset($_SESSION['phoneNumber']) ? $_SESSION['phoneNumber'] : '';
@@ -11,21 +11,24 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
 ?>
 
 <!DOCTYPE html>
+
 <head>
     <title>HobbyConnect</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./RecuQuest.css">
     <link rel="shortcut icon" href="./img/favicon.ico">
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./RecuQuest.js"></script>
 </head>
 <nav>
-<ul>
-    <li><a href="../top/index.php">トップ</a></li>
-    <li><a href="../report/report.html">クエスト報告</a></li>
-    <li><a href="../history/index.html">クエスト受注履歴</a></li>
-    <li><a href="../achievement/">アチーブメント</a></li>
-</ul>
+    <ul>
+        <li><a href="../top/index.php">トップ</a></li>
+        <li><a href="../report/report.html">クエスト報告</a></li>
+        <li><a href="../history/index.html">クエスト受注履歴</a></li>
+        <li><a href="../achievement/">アチーブメント</a></li>
+    </ul>
 </nav>
+
 <body>
     <div id="header">
         <object data="../../header/header.html" width="100%" height="auto"></object>
@@ -34,7 +37,19 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
     <form method="post" action="process_form.php">
         <div>
             <label for="category">部門</label>
-            
+            <select id="category_select">
+                <option value="0"></option>
+                <option value="1">hoge</option>
+                <option value="2">ホゲ</option>
+                <option value="3">fuga</option>
+                <option value="4">フガ</option>
+            </select>
+            <script>
+                $(document).ready(function () {
+                    $('.category_select').select2();
+                });
+            </script>
+
         </div>
         <div>
             <label for="genre">ジャンル</label>
@@ -44,5 +59,5 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
         </div>
         <input type="submit" value="確認画面へ">
     </form>
-    
+
 </body>
