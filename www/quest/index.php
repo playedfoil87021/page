@@ -126,10 +126,11 @@ mysqli_close($conn);
     <script src="top.js"></script>
     <nav>
         <ul>
-            <li><a href="../report/report.html">クエスト報告</a></li>
-            <li><a href="../recruit/RecuQuest.html">クエスト履歴</a></li>
-            <li><a href="../history/index.html">クエスト受注履歴</a></li>
-            <li><a href="../achievement/">アチーブメント</a></li>
+            <li><a href="./report/">クエスト報告</a></li>
+            <li><a href="./recruit">クエスト履歴</a></li>
+            <li><a href="./history/">クエスト受注履歴</a></li>
+            <li><a href="./achievement/">アチーブメント</a></li>
+            <li><a href="./recruit/">クエスト募集</a></li>
         </ul>
     </nav>
 </head>

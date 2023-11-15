@@ -2,7 +2,7 @@
 session_start();
 
 // フォームからセッションに格納
-$accountName = isset($_SESSION['accountName']) ? $_SESSION['accountName'] : '';
+$questTypeSes = isset($_SESSION['quesTypeSes']) ? $_SESSION['questTypeSes'] : '';
 $accountId = isset($_SESSION['accountId']) ? $_SESSION['accountId'] : '';
 $mailAddress = isset($_SESSION['mailAddress']) ? $_SESSION['mailAddress'] : '';
 $phoneNumber = isset($_SESSION['phoneNumber']) ? $_SESSION['phoneNumber'] : '';
@@ -30,7 +30,8 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
     <div id="header">
         <object data="../../header/header.html" width="100%" height="auto"></object>
     </div>
-    <form method="post">
+    <h1>クエスト募集</h1>
+    <form method="post" action="process_form.php">
         <div>
             <label for="category">部門</label>
             
@@ -41,6 +42,7 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
         <div>
             <label for="quest_outline">クエスト概要</label>
         </div>
+        <input type="submit" value="確認画面へ">
     </form>
     
 </body>
