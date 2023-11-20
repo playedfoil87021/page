@@ -17,7 +17,7 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
     <meta charset="utf-8">
     <link rel="shortcut icon" href="./img/favicon.ico">
     <link href="css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script><!--https://arts-factory.net/select2/-->
     <script src="js/select2.min.js"></script>
     <link rel="stylesheet" href="./RecuQuest.css">
     <script src="./RecuQuest.js"></script>
