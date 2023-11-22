@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="submit" value="ログイン">
     </div>
   </form>
+  <a href="../join">新規会員登録</a>
 </body>
 
 </html>
