@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // データベースに接続
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
-    $user = 'school';
+    $user = 'root';
     $password = 'P2L13foJQeebl3Jl';
 
     try {
