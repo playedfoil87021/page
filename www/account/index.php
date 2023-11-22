@@ -14,7 +14,7 @@
 
             <a href="./logout/" class="link">
                 <img src="./img/logout.png" alt="">
-                <span class="underline">ログアウト</span>
+                <span class="underline">ログアウト</span> <!--ポップアップでログアウトするかを聞く-->
             </a>
         </div>
 
