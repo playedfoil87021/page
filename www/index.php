@@ -18,10 +18,10 @@
     <nav class="titlepage">
         <ul>
             <button class="login">
-                <li><a href=./useremaster/login.php>ログイン</a></li>
+                <li><a href=./account/login>ログイン</a></li>
             </button>
             <button class="sign">
-                <li><a href=./useremaster/input1.php>新規登録</a></li>
+                <li><a href=./account/join>新規登録</a></li>
             </button>
         </ul>
     </nav>
