@@ -134,7 +134,7 @@ mysqli_close($conn);
         </ul>
     </nav>
 </head>
-<header><iframe src="../header/header1.html" frameborder="0" width="100%" scrolling="no"></iframe></header>
+<header><iframe src="../header/header1.php" frameborder="0" width="100%" scrolling="no"></iframe></header>
 <body>
     <div class="status">
         <p class="name">char_name</p>
