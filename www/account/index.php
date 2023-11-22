@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="account_menu.css">
     <title>アカウント設定</title>
 </head>
+<header><iframe src="../../header/header1.html" frameborder="0" width="100%" scrolling="no"></iframe></header>
 <body>
     <div class="page-container">
         <div class="container">

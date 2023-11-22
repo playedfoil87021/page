@@ -33,7 +33,7 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
 
 <body>
     <div id="header">
-        <object data="../../header/header.html" width="100%" height="auto"></object>
+        <object data="../../header/header1.html" width="100%" height="auto"></object>
     </div>
     <h1>クエスト募集</h1>
     <form method="post" action="process_form.php">

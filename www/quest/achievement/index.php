@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="./report.js"></script>
 </head>
+<header><iframe src="../header/header1.html" frameborder="0" width="100%" scrolling="no"></iframe></header>
 <nav>
 <ul>
     <li><a href="../top/index.php">トップ</a></li>

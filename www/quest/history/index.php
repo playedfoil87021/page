@@ -6,6 +6,7 @@
   <title>test</title>
   <link rel="stylesheet" href="test2.css">
 </head>
+<header><iframe src="../header/header1.html" frameborder="0" width="100%" scrolling="no"></iframe></header>
 <body>
 
 <div class="custom-box">
