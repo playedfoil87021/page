@@ -11,7 +11,7 @@ if (isset($_GET['logout'])) {
     }
 
     session_destroy();
-    header('Location: login.php'); // ログアウト後にログインページにリダイレクト
+    header('Location: ../../index.php'); // ログアウト後にログインページにリダイレクト
     exit();
 }
 ?>
