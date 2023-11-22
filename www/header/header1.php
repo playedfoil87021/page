@@ -1,23 +1,4 @@
-<?php
-session_start();
 
-// ログイン状態の確認
-if (isset($_SESSION['accountname'])) {
-  // ユーザーがログインしている場合
-  $loggedInUser = $_SESSION['accountname'];
-
-  // データベースからユーザー名を取得するか、登録時にデータベースに保存した名前を取得する方法に応じて適切なデータベースクエリを実行できます
-
-  // ユーザー名を表示
-  echo "<h1>ようこそ、{$loggedInUser} さん</h1>";
-
-  // その他のコンテンツを表示
-} else {
-  // ログインしていない場合、リダイレクトなどの適切なアクションを実行
-  header('Location: ログインページのURL');
-  exit();
-}
-?>
 <!--1トップ画面担当：小川・安江,確認者：（　）-->
 <!DOCTYPE html>
 <html>
@@ -45,8 +26,15 @@ if (isset($_SESSION['accountname'])) {
     <!--▽▽ヘッダーリスト▽▽-->
     <nav>
       <ul>
-        <h1>ようこそ、
-          <?php $_SESSION['accountname'] ?>さん
+        <h1>
+          <?php session_start();
+
+            // ログイン状態の確認
+            if (isset($_SESSION['accountname'])) {
+            // ユーザーがログインしている場合
+            $loggedInUser = $_SESSION['accountname'];}
+            echo "<h1>ようこそ、{$loggedInUser} さん</h1>";
+            ?>
         </h1>
         <li><a href="../account/" target="_top">アカウント</a></li>
         <li><a href="../quest/index.php" target="_top">クエスト</a></li>
