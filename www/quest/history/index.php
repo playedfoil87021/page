@@ -9,7 +9,7 @@
 <body>
 
 <div class="custom-box">
-  <p class="custom-text">「あいうえお」</p>
+  <p class="custom-text">読書をする！目標時間15分</p>
 </div>
 
 <div>
