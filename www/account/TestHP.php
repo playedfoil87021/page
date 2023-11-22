@@ -33,7 +33,7 @@ if (isset($_SESSION['accountname'])) {
     <h1>ここはテストのHPです</h1>
 
     <p><a href='./logout'>ログアウト</a></p>
-    <p><a href='change.php'>アカウント変更</a></p>
+    <p><a href='./setting'>アカウント変更</a></p>
 
 
 
