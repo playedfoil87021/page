@@ -49,7 +49,7 @@ if (isset($_SESSION['accountname'])) {
           <?php $_SESSION['accountname'] ?>さん
         </h1>
         <li><a href="../account/" target="_top">アカウント</a></li>
-        <li><a href="../quest/top/index.php" target="_top">クエスト</a></li>
+        <li><a href="../quest/index.php" target="_top">クエスト</a></li>
         <li><a href="../point/index.php" target="_top">ポイント</a></li>
         <li><a href="../quest/achievement/" target="_top">実績</a></li>
         <li><a href="../quest/report/" target="_top">募集</a></li>
