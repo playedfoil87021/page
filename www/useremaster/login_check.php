@@ -2,9 +2,9 @@
 session_start();
 
 // データベースに接続
-$dsn = 'mysql:dbname=questwalker;host=localhost;charset=utf8';
-$user = 'root';
-$password = 'mysql';
+$dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
+    $user = 'root';
+    $password = 'P2L13foJQeebl3Jl';
 
 try {
     $PDO = new PDO($dsn, $user, $password);

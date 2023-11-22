@@ -7,9 +7,9 @@ $loggedInUser = null;
 if (isset($_SESSION['accountId'])) {
     try {
         // データベースに接続
-        $dsn = 'mysql:dbname=questwalker;host=localhost;charset=utf8';
+        $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
         $user = 'root';
-        $password = 'mysql';
+        $password = 'P2L13foJQeebl3Jl';
 
         $PDO = new PDO($dsn, $user, $password);
         $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
