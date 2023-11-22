@@ -36,7 +36,7 @@
     }
 
     // フォームに戻るリンクを表示
-    echo "<a href='index.php'>入力画面に戻る</a>";
+    echo "<a href='input1.php'>入力画面に戻る</a>";
     ?>
 
     <div>

@@ -31,11 +31,5 @@ if (isset($_SESSION['accountname'])) {
 </head>
 <body>
     <h1>ここはテストのHPです</h1>
-
-    <p><a href='logout.php'>ログアウト</a></p>
-    <p><a href='change.php'>アカウント変更</a></p>
-
-
-
 </body>
 </html>
