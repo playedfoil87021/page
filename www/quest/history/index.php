@@ -24,9 +24,6 @@
   </form>
 </div>
 
-<div class="goal-text">
-  読書をする！目標時間: 15分
-</div>
 
 </body>
 </html>
