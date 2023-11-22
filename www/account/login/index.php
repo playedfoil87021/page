@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // ログイン成功後の処理
             // 例: ダッシュボードにリダイレクト
-            header('Location: ../TestHP.php');
+            header('Location: ../quest/');
             exit();
         } else {
             // パスワードが一致しない場合
