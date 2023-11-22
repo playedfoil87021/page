@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>クエスト受注履歴</title>
-    <link rel="stylesheet" href="./history.css">
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="./history.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
+  <link rel="stylesheet" href="test2.css">
 </head>
 <body>
-    <object data="../move.html" type=""></object>
-    <p class="nav-open">クエスト名</p>
-    <nav>
-        <ul>
-            <li class="basic">基礎ポイント：<span class="basic_pt">100</span></li>
-            <li class="bonus">追加ポイント：<span class="bonus_pt">10</span></li>
-            <li class="balance">ポイント残高：<span class="before_pt">190</span>→<span class="after_pt">300</span></li>
-        </ul>
-    </nav>
+
+<div class="custom-box">
+  <p class="custom-text">「あいうえお」</p>
+</div>
+
+<div>
+  <form action="test.html" method="post" enctype="multipart/form-data" >
+    <div>
+      <input type="file" name="test">
+    </div>
+    <div class="custom-submit">
+      <input type="submit" value="送信する">
+      <input type="button" class="cancel-btn" value="キャンセル">
+    </div>
+  </form>
+</div>
+
+<div class="goal-text">
+  読書をする！目標時間: 15分
+</div>
+
 </body>
-
-
 </html>
