@@ -8,8 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $inputAccountId = $_POST['account_id'];
     $inputPassword = $_POST['pass_wd'];
 
-    $hashedPassword = password_hash($inputPassword, PASSWORD_BCRYPT);
-
     // データベースに接続
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
     $user = 'root';
@@ -25,17 +23,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute();
         $user1 = $stmt->fetch(PDO::FETCH_ASSOC);
 
-       
         if ($user1 && password_verify($inputPassword, $user1['pass_wd'])) {
             // パスワードが一致する場合
-           $_SESSION['accountId'] = $inputAccountId;
-           $_SESSION['accountname'] = $user1['account_name']; // ユーザー名をセッションに保存
-           $_SESSION['accountmail'] = $user1['mail_address'];//$user1はDBの一致するすべてのデータが入ってる、持ってきたいデータをセッションに入れれば持ってこれる
-
+            $_SESSION['accountId'] = $inputAccountId;
+            $_SESSION['accountname'] = $user1['account_name'];
+            $_SESSION['accountmail'] = $user1['mail_address'];
+            
+            // ログイン中のユーザーを $_SESSION['userList'] に追加
+            if (!isset($_SESSION['userList'])) {
+                $_SESSION['userList'] = array();
+            }
+            $_SESSION['userList'][] = $inputAccountId;
 
             // ログイン成功後の処理
             // 例: ダッシュボードにリダイレクト
-            header('Location: TestHP.php');
+            header('Location: ../TestHP.php');
             exit();
         } else {
             // パスワードが一致しない場合
@@ -62,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="text" name="account_id">
     <div>パスワード</div>
     <input type="password" name="pass_wd">
-    
     
     <div>
       <input type="submit" value="ログイン">
