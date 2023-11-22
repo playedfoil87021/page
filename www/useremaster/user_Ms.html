@@ -1,0 +1,44 @@
+if(!empty($_POST['inputName'])){
+    try{
+      $sql  = 'INSERT INTO sortable(name) VALUES(:ONAMAE)';
+      $stmt = $dbh->prepare($sql);
+  
+      $stmt->bindValue(':ONAMAE', $_POST['inputName'], PDO::PARAM_STR);
+      $stmt->execute();
+  
+      header('location: http://localhost:8001/');
+      exit();
+    } catch (PDOException $e) {
+        echo 'データベースにアクセスできません！'.$e->getMessage();
+    }
+  }
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper">
+
+        <div id="input_form">
+          <form action="index.php" method="POST">
+            <input type="text" name="inputName">
+            <input type="submit" value="登録">
+          </form>
+        </div><!--/ #input_form-->
+        
+        <div id="drag-area">
+        <?php
+        表示させる処理…
+        ?>
+        </div><!--/ #drag-area-->
+        
+        </div><!--/ #wrapper-->
+</body>
+</html>
