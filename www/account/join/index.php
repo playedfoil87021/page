@@ -53,6 +53,7 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
         <input type="submit" value="入力内容確認">
       </div>
     </form>
+    <a href="../login">アカウントをお持ちの方はこちら</a>
   </body>
 
   </html>
