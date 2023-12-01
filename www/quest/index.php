@@ -169,7 +169,8 @@ mysqli_close($conn);
             <?php echo $maxChangeCount; ?>
         </p>
         <form method="post" action="">
-            <!-- <input type="submit" name="resetQuest" value="クエストと回数をリセット" id="resetButton"> -->
+            <p>↓デバッグ用</p>
+            <input type="submit" name="resetQuest" value="クエストと回数をリセット" id="resetButton">
             <input type="hidden" name="loadedDate" id="loadedDate" value="">
 
             <input type="submit" name="changeQuest" value="クエストを変更する" id="changeButton">
@@ -181,7 +182,7 @@ mysqli_close($conn);
         ?>
     </div>
     <div class="btn">
-        <a href=../report/report.html><button class="success">達成報告</button></a>
+        <a href=./report><button class="success">達成報告</button></a>
         <button class="forgo">あきらめる</button>
     </div>
     <p>残り時間</p>

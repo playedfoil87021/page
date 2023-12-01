@@ -41,13 +41,13 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
     <div>性別</div>
     <div>
       <input type="radio" name="gender" value="0" <?php if ($gender1 == "0")
-        echo 'checked' ?>>hoge
+        echo 'checked' ?>>男性
 
         <input type="radio" name="gender" value="1" <?php if ($gender1 == "1")
-        echo 'checked' ?>>fuga
+        echo 'checked' ?>>女性
 
         <input type="radio" name="gender" value="2" <?php if ($gender1 == "2")
-        echo 'checked' ?>>piyo
+        echo 'checked' ?>>その他
       </div>
       <div>
         <input type="submit" value="入力内容確認">
