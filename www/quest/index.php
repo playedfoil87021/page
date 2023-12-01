@@ -15,10 +15,11 @@ if (!$conn) {
 
 session_start();
 
-function getRandomQuestFromDatabase($conn)
+function getRandomQuestFromDatabase($connInFunc)
 {
+    $rowCount = $db->query('SELECT count(*) FROM questwalker.quest_list')
     $query = "SELECT qu_name FROM questwalker.quest_list ORDER BY RAND() LIMIT 1";
-    $result = mysqli_query($conn, $query);
+    $result = mysqli_query($connInFunc, $query);
 
     if (!$result) {
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
@@ -135,6 +136,7 @@ mysqli_close($conn);
     </nav>
 </head>
 <header><iframe src="../header/header1.php" frameborder="0" width="100%" scrolling="no"></iframe></header>
+
 <body>
     <div class="status">
         <p class="name">char_name</p>
