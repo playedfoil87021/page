@@ -17,9 +17,10 @@ session_start();
 
 function getRandomQuestFromDatabase($connInFunc)
 {
-    $rowCountSQL = 'SELECT count(*) FROM questwalker.quest_list';
+    $rowCountSQL = 'SELECT * FROM questwalker.quest_list';
     $rowCount = mysqli_query($connInFunc,$rowCountSQL);
-    echo $rowCount;
+    $rowCountResult = mysqli_num_rows($rowCount);
+    echo $rowCountResult;
     $query = "SELECT qu_name FROM questwalker.quest_list ORDER BY RAND() LIMIT 1";
     $result = mysqli_query($connInFunc, $query);
 
