@@ -164,7 +164,7 @@ mysqli_close($conn);
     <div class="quest">
         <h1>現在のクエスト:
             <?php echo $currentQuest; ?>
-            <?php echo $rowCount?>
+            <?php echo $rowCount; ?>
         </h1>
         <p>変更回数:
             <?php echo $changeCount; ?>/
