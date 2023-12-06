@@ -17,10 +17,12 @@ session_start();
 
 function getRandomQuestFromDatabase($connInFunc)
 {
+    //クエストの行数を取得
     $rowCountSQL = 'SELECT * FROM questwalker.quest_list';
-    $rowCount = mysqli_query($connInFunc,$rowCountSQL);
-    $rowCountResult = mysqli_num_rows($rowCount);
+    //$rowCount = mysqli_query($connInFunc,$rowCountSQL);
+    $rowCountResult = mysqli_num_rows(mysqli_query($connInFunc,$rowCountSQL));
     echo $rowCountResult;
+
     $query = "SELECT qu_name FROM questwalker.quest_list ORDER BY RAND() LIMIT 1";
     $result = mysqli_query($connInFunc, $query);
 
