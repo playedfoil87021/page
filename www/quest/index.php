@@ -20,7 +20,7 @@ function getRandomQuestFromDatabase($connInFunc) {
     $rowCountSQL = 'SELECT * FROM questwalker.quest_list';
     $rowCountResult = mysqli_num_rows(mysqli_query($connInFunc, $rowCountSQL));
     //乱数をもとにクエストを決定
-    $randomNum = rand(0,$rowCountResult - 1);
+    $randomNum = rand(0, $rowCountResult - 1);
 
     //クエストを渡す
     $query = "SELECT qu_name FROM questwalker.quest_list LIMIT $randomNum,1";
@@ -106,8 +106,6 @@ if($currentDate != $sessionDate) {
 
 $initialTime = $_SESSION['timer'];
 $timeLeft = $initialTime;
-
-
 
 $changeCount = $_SESSION['change_count'];
 $maxChangeCount = 5;
@@ -253,8 +251,6 @@ mysqli_close($conn);
 
 
     </script>
-
-
 
 </body>
 
