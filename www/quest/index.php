@@ -21,7 +21,8 @@ function getRandomQuestFromDatabase($connInFunc) {
     $rowCountResult = mysqli_num_rows(mysqli_query($connInFunc, $rowCountSQL));
     //乱数をもとにクエストを決定
     $randomNum = rand(0,$rowCountResult - 1);
-    
+
+    //クエストを渡す
     $query = "SELECT qu_name FROM questwalker.quest_list LIMIT $randomNum,1";
     $result = mysqli_query($connInFunc, $query);
 
