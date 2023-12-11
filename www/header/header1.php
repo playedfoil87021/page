@@ -14,6 +14,12 @@
 
 
   <header>
+
+    <a href="../index.php" target="_top">
+      <h1>
+        <img class="head_img" src="./img/hobbyconnect.png" alt="">
+      </h1>
+    </a>
     <?php session_start();
 
     // ログイン状態の確認
@@ -23,12 +29,6 @@
     }
     echo "<h1>ようこそ、{$loggedInUser} さん</h1>";
     ?>
-
-    <a href="../index.php" target="_top">
-      <h1>
-        <img class="head_img" src="./img/hobbyconnect.png" alt="">
-      </h1>
-    </a>
     <!--▽▽ヘッダーリスト▽▽-->
     <nav>
       <ul>
