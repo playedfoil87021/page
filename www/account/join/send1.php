@@ -91,7 +91,7 @@
 
 
   ?>
-
+<button><a href="../index.php" target="_top">トップ画面へ</a></button>
 </body>
 
 </html>
