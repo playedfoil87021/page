@@ -31,9 +31,13 @@ function getRandomQuestFromDatabase($connInFunc)
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
         return false;
     }
-
+    appendDB();
 
     $row = mysqli_fetch_assoc($result);
+    
+    return $row['qu_name'];
+}
+function appendDB(){
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
     global $username;
     global $password;
@@ -64,7 +68,6 @@ function getRandomQuestFromDatabase($connInFunc)
         //exit('データベースエラー: ' . $e->getMessage());
     }*/
 
-    return $row['qu_name'];
 }
 
 $sessionDate = null; // $sessionDateを宣言
