@@ -55,8 +55,7 @@ function appendDB(){
         $stmt->bindParam(':quest_id', $quest_id);
         $stmt->bindParam(':quest_end', $quest_end);
         $stmt->bindParam(':change_count', $change_count);
-
-        return $sql;
+        $stmt->execute();
 
     /*} catch (PDOException $e) {
         // エラーハンドリング：エラーが発生した場合にエラーメッセージを表示
