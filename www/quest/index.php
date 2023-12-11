@@ -238,7 +238,7 @@ mysqli_close($conn);
         // ボタンが無効の場合、ボタンを無効化
         if (isButtonDisabled) {
             document.getElementById('changeButton').disabled = true;
-        }
+        }//hoge
     </script>
 
 </body>
