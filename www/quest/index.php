@@ -45,7 +45,6 @@ function getRandomQuestFromDatabase($connInFunc)
     $quest_id = 0;
     $quest_end ="2022/03/01 00:11:22";
     $change_count = 0;
-    try {
         $sql = "INSERT INTO mission_tracker(
             user_id,quest_id,quest_end,change_count
         ) VALUES (
@@ -60,10 +59,10 @@ function getRandomQuestFromDatabase($connInFunc)
         $stmt->bindParam(':quest_end', $quest_end);
         $stmt->bindParam(':change_count', $change_count);
 
-    } catch (PDOException $e) {
+    /*} catch (PDOException $e) {
         // エラーハンドリング：エラーが発生した場合にエラーメッセージを表示
         //exit('データベースエラー: ' . $e->getMessage());
-    }
+    }*/
 
     return $row['qu_name'];
 }
