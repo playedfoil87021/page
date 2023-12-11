@@ -62,7 +62,7 @@ function getRandomQuestFromDatabase($connInFunc)
 
     } catch (PDOException $e) {
         // エラーハンドリング：エラーが発生した場合にエラーメッセージを表示
-        exit('データベースエラー: ' . $e->getMessage());
+        //exit('データベースエラー: ' . $e->getMessage());
     }
 
     return $row['qu_name'];
