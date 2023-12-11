@@ -41,6 +41,10 @@ $dbname = "questwalker";
 
     // エラーモードを設定
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $usr_id = 0;
+    $quest_id = 0;
+    $quest_end = date("Y/m/d H:i:s", strtotime('600 sec'));
+    $change_count = 0;
     try {
         $sql ="INSERT INTO mission_tracker(
             user_id,quest_id,quest_end,change_count
@@ -51,10 +55,10 @@ $dbname = "questwalker";
             quest_end = VALUES(quest_end),
             change_count = VALUES(change_count);"; 
         $stmt = $PDO->prepare($sql);
-        $stmt->bindParam(':user_id',0);
-        $stmt->bindParam(':quest_id',0);
-        $stmt->bindParam(':quest_end',date("Y/m/d H:i:s", strtotime('600 sec')));
-        $stmt->bindParam(':change_count',0);
+        $stmt->bindParam(':user_id',$usr_id);
+        $stmt->bindParam(':quest_id',$quest_id);
+        $stmt->bindParam(':quest_end',$quest_end);
+        $stmt->bindParam(':change_count',$change_count);
 
     } catch (PDOException $e) {
         // エラーハンドリング：エラーが発生した場合にエラーメッセージを表示
