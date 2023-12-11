@@ -43,7 +43,7 @@ function getRandomQuestFromDatabase($connInFunc)
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $usr_id = 10;
     $quest_id = 0;
-    $quest_end = date("Y/m/d H:i:s", strtotime('600 sec'));
+    $quest_end ="2022/03/01 00:11:22";
     $change_count = 0;
     try {
         $sql = "INSERT INTO mission_tracker(
