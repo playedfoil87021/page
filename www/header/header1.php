@@ -11,17 +11,14 @@
 </head>
 
 <body>
-
-
   <header>
-
     <a href="../quest/index.php" target="_top">
       <h1>
         <img class="head_img" src="./img/hobbyconnect.png" alt="">
       </h1>
     </a>
-    <?php session_start();
 
+    <?php session_start();
     // ログイン状態の確認
     if (isset($_SESSION['accountname'])) {
       // ユーザーがログインしている場合
@@ -33,9 +30,7 @@
     <nav>
       <ul>
         <h1>
-
         </h1>
-
         <li><a href="../quest/index.php" target="_top">クエスト</a></li>
         <li><a href="../other/inquiry/index.html" target="_top">利用規約</a></li>
         <li><a href="../other/privacy_policy/index.html" target="_top">プライバシーポリシー</a></li>
@@ -45,7 +40,6 @@
       <marquee scrollamount="7" direction="left" class="scroll">
         <strong>【本サービスご利用の皆さまへ】本サービスをご利用いただきありがとうございます。本サービスのモットーである『ヒトの成長を数値で可視化し、その変化を研究する』ことは、初めてのことに挑戦をし、それを継続することによって、自身が成長できるということです。ぜひ、自分の成長の為に本サービスをお楽しみください。HOBBYCONNECT一同より</strong>
       </marquee>
-
     </nav>
     <!--△△ヘッダーリスト△△-->
   </header>
