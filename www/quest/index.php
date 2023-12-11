@@ -128,15 +128,6 @@ mysqli_close($conn);
     <link rel="stylesheet" href="top.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="top.js"></script>
-    <nav>
-        <ul>
-            <li><a href="./report/">クエスト報告</a></li>
-            <li><a href="./recruit">クエスト履歴</a></li>
-            <li><a href="./history/">クエスト受注履歴</a></li>
-            <li><a href="./achievement/">アチーブメント</a></li>
-            <li><a href="./recruit/">クエスト募集</a></li>
-        </ul>
-    </nav>
 </head>
 <header><iframe src="../header/header1.php" frameborder="0" width="100%" scrolling="no"></iframe></header>
 
