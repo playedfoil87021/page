@@ -34,10 +34,10 @@ function getRandomQuestFromDatabase($connInFunc)
 
 
     $row = mysqli_fetch_assoc($result);
-    global $dsn;
-    global $user;
+    $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
+    global $username;
     global $password;
-    $PDO = new PDO($dsn, $user, $password);
+    $PDO = new PDO($dsn, $username, $password);
 
     // エラーモードを設定
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
