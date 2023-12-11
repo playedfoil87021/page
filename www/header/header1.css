@@ -63,3 +63,7 @@ li a {
   background-color: aliceblue;
   transform: translateY(-50%); /* 上下中央に配置 */
 }
+
+li.hover{
+  color:skyblue;
+}
