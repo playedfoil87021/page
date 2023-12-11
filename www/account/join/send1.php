@@ -38,14 +38,14 @@
     $count_sql->execute();
     $count_num = $count_sql->fetchColumn() + 1; // アカウント数に1を加えて新しい識別子を生成
   
-    //fetchColumn() + 1;
+    /*//fetchColumn() + 1;
     if ($count_num > 0) {
       // 挿入が成功した場合の処理
       echo "挿入された行数: " . $count_num;
     } else {
       echo "データの挿入に失敗しました。";
     }
-
+*/
 
     // SQLクエリを作成し、データを挿入
     $sql = "INSERT INTO acount_list (account_pk,account_name, account_id, mail_address, phone_number, pass_wd, gender) VALUES (:account_pk,:account_name, :account_id, :mail_address, :phone_number, :pass_wd, :gender)";
@@ -91,7 +91,7 @@
 
 
   ?>
-<button><a href="../index.php" target="_top">トップ画面へ</a></button>
+<button><a href="../../index.php" target="_top">トップ画面へ</a></button>
 </body>
 
 </html>
