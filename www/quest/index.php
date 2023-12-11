@@ -33,7 +33,7 @@ function getRandomQuestFromDatabase($connInFunc) {
 
     $row = mysqli_fetch_assoc($result);
     return $row['qu_name'];
-}
+}//test
 
 $sessionDate = null; // $sessionDateを宣言
 
