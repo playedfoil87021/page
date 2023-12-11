@@ -49,14 +49,7 @@ function appendDB(){
     $quest_id = 0;
     $quest_end ="2022/03/01 00:11:22";
     $change_count = 0;
-        $sql = "INSERT INTO mission_tracker(
-            user_id,quest_id,quest_end,change_count
-        ) VALUES (
-            :user_id,:quest_id,:quest_end,:change_count
-        )on duplicate key update
-            quest_id = VALUES(quest_id),
-            quest_end = VALUES(quest_end),
-            change_count = VALUES(change_count);";
+        $sql = "INSERT INTO mission_tracker(user_id,quest_id,quest_end,change_count) VALUES (:user_id,:quest_id,:quest_end,:change_count)on duplicate key update quest_id = VALUES(quest_id), quest_end = VALUES(quest_end),change_count = VALUES(change_count);";
         $stmt = $PDO->prepare($sql);
         $stmt->bindParam(':user_id', $usr_id);
         $stmt->bindParam(':quest_id', $quest_id);
