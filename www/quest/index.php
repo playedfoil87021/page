@@ -141,7 +141,7 @@ mysqli_close($conn);
 <header><iframe src="../header/header1.php" frameborder="0" width="100%" scrolling="no"></iframe></header>
 
 <body>
-    <div class="status">
+    <!--<div class="status">
         <p class="name">char_name</p>
         <img src="./img/rh.png" alt="" class="hp">
         <p class="hp_val">0</p>
@@ -162,7 +162,7 @@ mysqli_close($conn);
     </div>
     <div class="char_img">
         <img src="./img/no_image.jpg" alt="">
-    </div>
+    </div>-->
     <div class="quest">
         <h1>現在のクエスト:
             <?php echo $currentQuest; ?>
