@@ -1,4 +1,3 @@
-
 <!--1トップ画面担当：小川・安江,確認者：（　）-->
 <!DOCTYPE html>
 <html>
@@ -15,38 +14,28 @@
 
 
   <header>
-  <?php session_start();
+    <?php session_start();
 
-// ログイン状態の確認
-if (isset($_SESSION['accountname'])) {
-// ユーザーがログインしている場合
-$loggedInUser = $_SESSION['accountname'];}
-echo "<h1>ようこそ、{$loggedInUser} さん</h1>";
-?>
+    // ログイン状態の確認
+    if (isset($_SESSION['accountname'])) {
+      // ユーザーがログインしている場合
+      $loggedInUser = $_SESSION['accountname'];
+    }
+    echo "<h1>ようこそ、{$loggedInUser} さん</h1>";
+    ?>
 
     <a href="../index.php" target="_top">
       <h1>
         <img class="head_img" src="./img/hobbyconnect.png" alt="">
       </h1>
     </a>
-
-     <?php session_start();
-
-            // ログイン状態の確認
-            if (isset($_SESSION['accountname'])) {
-            // ユーザーがログインしている場合
-            $loggedInUser = $_SESSION['accountname'];}
-            echo "<h1>ようこそ、{$loggedInUser} さん</h1>";
-            ?>
-
-
     <!--▽▽ヘッダーリスト▽▽-->
     <nav>
       <ul>
         <h1>
-         
+
         </h1>
-        
+
         <li><a href="../quest/index.php" target="_top">クエスト</a></li>
         <li><a href="../other/inquiry/index.html" target="_top">利用規約</a></li>
         <li><a href="../other/privacy_policy/index.html" target="_top">プライバシーポリシー</a></li>
