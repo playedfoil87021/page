@@ -239,8 +239,6 @@ mysqli_close($conn);
         if (isButtonDisabled) {
             document.getElementById('changeButton').disabled = true;
         }
-
-
     </script>
 
 </body>
