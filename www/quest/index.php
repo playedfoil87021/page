@@ -134,7 +134,7 @@ if ($currentDate != $sessionDate) {
     $_SESSION['timer'] = $initialTime; // タイマーを初期時間に戻す
 }
 
-$initialTime = $_SESSION['timer'];
+//$initialTime = $_SESSION['timer'];
 $timeLeft = $initialTime;
 
 $changeCount = $_SESSION['change_count'];
