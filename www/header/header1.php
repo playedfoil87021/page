@@ -24,7 +24,7 @@ $loggedInUser = $_SESSION['accountname'];}
 echo "<h1>ようこそ、{$loggedInUser} さん</h1>";
 ?>
 
-    <a href="../index.php" target="_top">
+    <a href="../quest/index.php" target="_top">
       <h1>
         <img class="head_img" src="./img/hobbyconnect.png" alt="">
       </h1>
