@@ -31,13 +31,13 @@ function getRandomQuestFromDatabase($connInFunc)
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
         return false;
     }
-    $servername = "localhost:65233";
-    $username = "root";
-    $password = "P2L13foJQeebl3Jl";
-    $dbname = "questwalker";
+
 
     $row = mysqli_fetch_assoc($result);
-    $PDO = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
+    $user = 'root';
+    $password = 'P2L13foJQeebl3Jl';
+    $PDO = new PDO($dsn, $user, $password);
 
     // エラーモードを設定
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
