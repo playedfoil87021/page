@@ -9,18 +9,24 @@ $dbname = "questwalker";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // 接続エラーの確認
-if (!$conn) {
-    die("データベースへの接続に失敗しました: " . mysqli_connect_error());
+if(!$conn) {
+    die("データベースへの接続に失敗しました: ".mysqli_connect_error());
 }
 
 session_start();
 
-function getRandomQuestFromDatabase($conn)
-{
-    $query = "SELECT qu_name FROM questwalker.quest_list ORDER BY RAND() LIMIT 1";
-    $result = mysqli_query($conn, $query);
+function getRandomQuestFromDatabase($connInFunc) {
+    //クエストの行数を取得
+    $rowCountSQL = 'SELECT * FROM questwalker.quest_list';
+    $rowCountResult = mysqli_num_rows(mysqli_query($connInFunc, $rowCountSQL));
+    //乱数をもとにクエストを決定
+    $randomNum = rand(0, $rowCountResult - 1);
 
-    if (!$result) {
+    //クエストを渡す
+    $query = "SELECT qu_name FROM questwalker.quest_list LIMIT $randomNum,1";
+    $result = mysqli_query($connInFunc, $query);
+
+    if(!$result) {
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
         return false;
     }
@@ -38,7 +44,7 @@ $currentDate = date('Y-m-d');
 $sessionDate = $currentDate;
 
 // 前回の日付と異なる場合、クエストを変更し、タイマーをリセット
-if ($currentDate != $sessionDate) {
+if($currentDate != $sessionDate) {
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
     $_SESSION['current_date'] = $currentDate;
@@ -49,15 +55,15 @@ if ($currentDate != $sessionDate) {
 $initialTime = 300;
 
 // セッションからタイマーの値を取得
-if (isset($_SESSION['timer'])) {
+if(isset($_SESSION['timer'])) {
     $timeLeft = $_SESSION['timer'];
 } else {
     $timeLeft = $initialTime;
 }
 
 // クエストが変更された場合
-if (isset($_POST['changeQuest'])) {
-    if ($_SESSION['change_count'] < 5) { // 上限を5回に設定
+if(isset($_POST['changeQuest'])) {
+    if($_SESSION['change_count'] < 5) { // 上限を5回に設定
         $timeLeft = $initialTime;
         $_SESSION['change_count']++; // 回数をカウントアップ
         $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
@@ -67,7 +73,7 @@ if (isset($_POST['changeQuest'])) {
 }
 
 // リセットボタンが押された場合
-if (isset($_POST['resetQuest'])) {
+if(isset($_POST['resetQuest'])) {
     $_SESSION['change_count'] = 0;
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['current_date'] = $currentDate;
@@ -77,38 +83,36 @@ if (isset($_POST['resetQuest'])) {
 }
 
 
-if ($currentDate != $sessionDate) {
+if($currentDate != $sessionDate) {
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
 }
 
-if (!isset($_SESSION['current_quest'])) {
+if(!isset($_SESSION['current_quest'])) {
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
 }
 
 // クエスト情報をセッションに保存
-if ($currentDate != $sessionDate) {
+if($currentDate != $sessionDate) {
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
 }
 
 // タイマーをセッションに保存
-if ($currentDate != $sessionDate) {
+if($currentDate != $sessionDate) {
     $_SESSION['timer'] = $initialTime; // タイマーを初期時間に戻す
 }
 
 $initialTime = $_SESSION['timer'];
 $timeLeft = $initialTime;
 
-
-
 $changeCount = $_SESSION['change_count'];
 $maxChangeCount = 5;
 $isButtonDisabled = ($changeCount >= $maxChangeCount);
 $currentQuest = $_SESSION['current_quest'];
 
-if ($changeCount >= 5) {
+if($changeCount >= 5) {
     $isButtonDisabled = true; // ボタンを無効にするフラグを設定
 }
 
@@ -135,6 +139,7 @@ mysqli_close($conn);
     </nav>
 </head>
 <header><iframe src="../header/header1.php" frameborder="0" width="100%" scrolling="no"></iframe></header>
+
 <body>
     <div class="status">
         <p class="name">char_name</p>
@@ -161,25 +166,27 @@ mysqli_close($conn);
     <div class="quest">
         <h1>現在のクエスト:
             <?php echo $currentQuest; ?>
+            <?php echo $rowCount; ?>
         </h1>
         <p>変更回数:
             <?php echo $changeCount; ?>/
             <?php echo $maxChangeCount; ?>
         </p>
         <form method="post" action="">
-            <!-- <input type="submit" name="resetQuest" value="クエストと回数をリセット" id="resetButton"> -->
+            <p>↓デバッグ用</p>
+            <input type="submit" name="resetQuest" value="クエストと回数をリセット" id="resetButton">
             <input type="hidden" name="loadedDate" id="loadedDate" value="">
 
             <input type="submit" name="changeQuest" value="クエストを変更する" id="changeButton">
         </form>
         <?php
-        if ($changeCount >= 5) {
+        if($changeCount >= 5) {
             echo "<p>変更回数の上限に達しました。</p>";
         }
         ?>
     </div>
     <div class="btn">
-        <a href=../report/report.html><button class="success">達成報告</button></a>
+        <a href=./report><button class="success">達成報告</button></a>
         <button class="forgo">あきらめる</button>
     </div>
     <p>残り時間</p>
@@ -244,8 +251,6 @@ mysqli_close($conn);
 
 
     </script>
-
-
 
 </body>
 
