@@ -223,7 +223,7 @@ mysqli_close($conn);
         var isButtonDisabled = <?php echo $isButtonDisabled ? 'true' : 'false'; ?>;
 
         // セッションから残り時間を取得
-        var timeLeft = <?php echo $timeLeft; ?>;
+        var timeLeft = 0;
 
         // ページが読み込まれたときにタイマーを設定
         document.addEventListener('DOMContentLoaded', function () {
