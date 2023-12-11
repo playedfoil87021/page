@@ -30,8 +30,6 @@
 
     <nav>
       <ul>
-
-
         <li><a class="hobi" href="../quest/index.php" target="_top">クエスト</a></li>
         <li><a class="hobi" href="../other/inquiry/index.html" target="_top">利用規約</a></li>
         <li><a class="hobi" href="../other/privacy_policy/index.html" target="_top">プライバシーポリシー</a></li>
