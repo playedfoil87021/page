@@ -31,8 +31,36 @@ function getRandomQuestFromDatabase($connInFunc)
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
         return false;
     }
+    $servername = "localhost:65233";
+$username = "root";
+$password = "P2L13foJQeebl3Jl";
+$dbname = "questwalker";
 
     $row = mysqli_fetch_assoc($result);
+    $PDO = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+    // エラーモードを設定
+    $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    try {
+        $sql ="INSERT INTO mission_tracker(
+            user_id,quest_id,quest_end,change_count
+        ) VALUES (
+            :user_id,:quest_id,:quest_end,:change_count
+        )on duplicate key update
+            quest_id = VALUES(quest_id),
+            quest_end = VALUES(quest_end),
+            change_count = VALUES(change_count);"; 
+        $stmt = $PDO->prepare($sql);
+        $stmt->bindParam(':user_id',0);
+        $stmt->bindParam(':quest_id',0);
+        $stmt->bindParam(':quest_end',date("Y/m/d H:i:s", strtotime('600 sec')));
+        $stmt->bindParam(':change_count',0);
+
+    } catch (PDOException $e) {
+        // エラーハンドリング：エラーが発生した場合にエラーメッセージを表示
+        exit('データベースエラー: ' . $e->getMessage());
+    }
+
     return $row['qu_name'];
 }
 
@@ -238,7 +266,7 @@ mysqli_close($conn);
         // ボタンが無効の場合、ボタンを無効化
         if (isButtonDisabled) {
             document.getElementById('changeButton').disabled = true;
-        }
+    }
     </script>
 
 </body>
