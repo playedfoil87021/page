@@ -1,13 +1,123 @@
-.text-container {
-    width: 400px; /* テキストコンテナの幅を調整 */
-    height: 700px; /* テキストコンテナの高さを調整 */
-    background-color: #f0f0f0; /* 背景色を設定 */
-    border: 2px solid #333; /* ボーダーを設定 */
-    border-radius: 10px; /* 角丸を設定 */
-    padding: 20px; /* 内側の余白を設定 */
+
+.wrapKOPIPE-OK {
+    position: relative;
+    margin: 20px 0 0;
+    padding: 60px;
+    background: #f8f8f0;
+    border-radius: 20px
 }
 
-.text {
-    font-size: 30px; /* テキストのフォントサイズを設定 */
-    line-height: 1.5; /* 行間を設定 */
+h1+.wrapKOPIPE-OK {
+    margin-top: 80px
+}
+
+.wrapKOPIPE-OK:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -50px;
+    left: 25px;
+    width: 70px;
+    height: 50px;
+    background: url("../imgs/pic_04.svg") no-repeat 50% 100%/70px auto
+}
+
+.wrapHINAGATA h1 {
+    margin: 0 0 50px 0;
+    font-size: 36px
+}
+
+.wrapHINAGATA h2 {
+    margin: 50px 0 40px 0;
+    padding: 15px 0 15px 20px;
+    font-size: 28px;
+    border-left: 5px solid #5db5bd
+}
+
+.wrapHINAGATA p.tR {
+    margin: 60px 0 0 0;
+    text-align: right
+}
+
+.wrapHINAGATA ol {
+    margin: 20px 0 0 50px
+}
+
+.wrapHINAGATA ol li {
+    position: relative;
+    list-style: outside decimal;
+    padding: 0 0 0 5px
+}
+
+.wrapHINAGATA ol li::marker {
+    font-size: 130%;
+    font-weight: 700;
+    color: #5db5bd
+}
+
+.wrapHINAGATA ol li ol {
+    padding: 20px 0 0 20px
+}
+
+.wrapHINAGATA ol.kakkoNum {
+    counter-reset: listNum
+}
+
+.wrapHINAGATA ol.kakkoNum li {
+    list-style: none;
+    margin-left: 1.5rem
+}
+
+.wrapHINAGATA ol.kakkoNum li+li {
+    margin-top: 2rem
+}
+
+.wrapHINAGATA ol.kakkoNum li:before {
+    display: block;
+    position: absolute;
+    top: -0.2rem;
+    left: -3.5rem;
+    width: 3.5rem;
+    counter-increment: listNum;
+    content: "（" counter(listNum) "）";
+    font-size: 130%;
+    font-weight: 700;
+    color: #5db5bd
+}
+
+.wrapHINAGATA ol.kakkoNum li dt {
+    margin-bottom: 0.3rem;
+    font-size: 1.2rem
+}
+
+.wrapHINAGATA ol.kakkoNum li dl+p {
+    margin-top: 1.5rem
+}
+
+.wrapHINAGATA ol.reStart2 {
+    counter-reset: listNum 1
+}
+
+.wrapHINAGATA ol.reStart3 {
+    counter-reset: listNum 2
+}
+
+.wrapHINAGATA ol.reStart4 {
+    counter-reset: listNum 3
+}
+
+.wrapHINAGATA ol.reStart5 {
+    counter-reset: listNum 4
+}
+
+.wrapKOPIPE-OK pre {
+    width: 620px;
+    max-height: 500px;
+    overflow: scroll;
+    background: #ffffff
+}
+
+.wrapKOPIPE-OK code {
+    display: block;
+    padding: 10px 20px
 }

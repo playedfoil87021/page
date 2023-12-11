@@ -15,6 +15,14 @@
 
 
   <header>
+  <?php session_start();
+
+// ログイン状態の確認
+if (isset($_SESSION['accountname'])) {
+// ユーザーがログインしている場合
+$loggedInUser = $_SESSION['accountname'];}
+echo "<h1>ようこそ、{$loggedInUser} さん</h1>";
+?>
 
     <a href="../index.php" target="_top">
       <h1>
@@ -22,12 +30,7 @@
       </h1>
     </a>
 
-
-    <!--▽▽ヘッダーリスト▽▽-->
-    <nav>
-      <ul>
-        <h1>
-          <?php session_start();
+     <?php session_start();
 
             // ログイン状態の確認
             if (isset($_SESSION['accountname'])) {
@@ -35,17 +38,23 @@
             $loggedInUser = $_SESSION['accountname'];}
             echo "<h1>ようこそ、{$loggedInUser} さん</h1>";
             ?>
+
+
+    <!--▽▽ヘッダーリスト▽▽-->
+    <nav>
+      <ul>
+        <h1>
+         
         </h1>
-        <li><a href="../account/" target="_top">アカウント</a></li>
+        
         <li><a href="../quest/index.php" target="_top">クエスト</a></li>
-        <li><a href="../point/index.php" target="_top">ポイント</a></li>
-        <li><a href="../quest/achievement/" target="_top">実績</a></li>
-        <li><a href="../quest/report/" target="_top">募集</a></li>
+        <li><a href="../other/inquiry/index.html" target="_top">利用規約</a></li>
+        <li><a href="../other/privacy_policy/index.html" target="_top">プライバシーポリシー</a></li>
         <li><a href="../other/inquiry/" target="_top">ヘルプ</a></li>
         <li><a href="../account/logout/" target="_top">ログアウト</a></li>
       </ul>
       <marquee scrollamount="7" direction="left" class="scroll">
-        <strong>【緊急速報】11月30日に山上先生来訪❕❕</strong>
+        <strong>【本サービスご利用の皆さまへ】本サービスをご利用いただきありがとうございます。本サービスのモットーである『ヒトの成長を数値で可視化し、その変化を研究する』ことは、初めてのことに挑戦をし、それを継続することによって、自身が成長できるということです。ぜひ、自分の成長の為に本サービスをお楽しみください。HOBBYCONNECT一同より</strong>
       </marquee>
 
     </nav>
