@@ -41,7 +41,7 @@ function getRandomQuestFromDatabase($connInFunc)
 
     // エラーモードを設定
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $usr_id = 0;
+    $usr_id = 10;
     $quest_id = 0;
     $quest_end = date("Y/m/d H:i:s", strtotime('600 sec'));
     $change_count = 0;
