@@ -35,29 +35,43 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
     <input type="tel" pattern="[0-9]{10,11}" name="phone_number"
       value="<?php echo htmlspecialchars($phoneNumber, ENT_QUOTES, 'UTF-8'); ?>">
     <div>パスワード</div>
-    <input type="text" name="pass_wd" value="<?php echo htmlspecialchars($password1, ENT_QUOTES, 'UTF-8'); ?>" required>
-    <div>パスワード確認</div>
-    <input type="text" pattern=".{5,}" name="pass_wd_confirm" title="パスワードは5文字以上です" value="<?php echo htmlspecialchars($password1, ENT_QUOTES, 'UTF-8'); ?>"
-      required>
+    <input type="password" pattern=".{5,}" name="pass_wd" id="pass_wd"
+      value="<?php echo htmlspecialchars($password1, ENT_QUOTES, 'UTF-8'); ?>" required>
+    <div>パスワード確認</div><p id="error_msg"></p>
+    <input type="password" pattern=".{5,}" name="pass_wd_confirm" id="pass_wd_confirm"
+      value="<?php echo htmlspecialchars($password1, ENT_QUOTES, 'UTF-8'); ?>" required>
 
     <div>性別</div>
     <div>
-      <input type="radio" name="gender" value="0" <?php if ($gender1 == "0")
-        echo 'checked' ?>required>男性
+      <input type="radio" name="gender" value="0" <?php if ($gender1=="0" ) echo 'checked' ?>required>男性
 
-        <input type="radio" name="gender" value="1" <?php if ($gender1 == "1")
-        echo 'checked' ?>required>女性
+      <input type="radio" name="gender" value="1" <?php if ($gender1=="1" ) echo 'checked' ?>required>女性
 
-        <input type="radio" name="gender" value="2" <?php if ($gender1 == "2")
-        echo 'checked' ?>required>その他
-      </div>
-      <div>
-        <input type="submit" value="入力内容確認">
-      </div>
-    </form>
-    <a href="../login">アカウントをお持ちの方はこちら</a>
-  </body>
+      <input type="radio" name="gender" value="2" <?php if ($gender1=="2" ) echo 'checked' ?>required>その他
+    </div>
+    <div>
+      <input type="submit" value="入力内容確認" onclick="return confirmPassword();">
+    </div>
+  </form>
+  <a href="../login">アカウントをお持ちの方はこちら</a>
+</body>
+<script>
+  function confirmPasswd() {
+    const password = document.getElementById('pass_wd').value;
+    const confirmPassword = document.getElementById('pass_wd_confirm').value;
+    const errorMsg = document.getElementById('error_msg');
 
-  </html>
+    if (password == confirmPassword) {
+      errorMsg.innerText = "";
+      return true;
+    } else {
+      errorMsg.innerText = "パスワードが一致しません";
+      return false;
+    }
+  }
+    }
+</Script>
 
-  <!--     -->
+</html>
+
+<!--     -->
