@@ -1,4 +1,5 @@
 <?php
+echo $_SESSION['accountname'];
 // MySQLサーバーへの接続パラメータの設定
 $servername = "localhost:65233";
 $username = "root";
@@ -30,13 +31,14 @@ function getRandomQuestFromDatabase($connInFunc)
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
         return false;
     }
-    questDataSet($randomNum);
+    $time = mysqli_query($connInFunc,"SELECT time FROM questwalker.quest_list LIMIT $randomNum,1");
+    questDataSet($randomNum,$time);
 
     $row = mysqli_fetch_assoc($result);
 
     return $row['qu_name'];
 }
-function questDataSet($questId)
+function questDataSet($questId,$timeLimit)
 {
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
     global $username;
@@ -46,7 +48,7 @@ function questDataSet($questId)
     // エラーモードを設定
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $usrId = 10;
-    $questEnd = date("Y/m/d H:i:s", strtotime('600 sec'));
+    $questEnd = date("Y/m/d H:i:s", strtotime("$timeLimit sec"));
     $changeCount = 0;
     try {
         $sql = "INSERT INTO mission_tracker(user_id,quest_id,quest_end,change_count) VALUES (:user_id,:quest_id,:quest_end,:change_count)on duplicate key update quest_id = VALUES(quest_id), quest_end = VALUES(quest_end),change_count = VALUES(change_count);";
