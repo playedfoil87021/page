@@ -16,6 +16,7 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/index.css">
   <title>Document</title>
 </head>
 
@@ -25,7 +26,7 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
     <input pattern="^[a-zA-Z0-9ぁ-んーァ-ヶーｱ-ﾝﾞﾟ一-龠]+$" type="text" name="account_name"
       value="<?php echo htmlspecialchars($accountName, ENT_QUOTES, 'UTF-8'); ?>" required>
     <div>ユーザーID</div>
-    <input type="^[a-zA-Z0-9]+$" name="account_id"
+    <input pattern="^[a-zA-Z0-9]+$" type="text" name="account_id"
       value="<?php echo htmlspecialchars($accountId, ENT_QUOTES, 'UTF-8'); ?>" required>
     <div>メールアドレス</div>
     <input type="email" name="mail_address" value="<?php echo htmlspecialchars($mailAddress, ENT_QUOTES, 'UTF-8'); ?>"
