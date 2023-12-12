@@ -29,7 +29,7 @@ function getRandomQuestFromDatabase($connInFunc)
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
         return false;
     }
-    $getTime = mysqli_query($connInFunc,"SELECT time FROM questwalker.quest_list LIMIT $randomNum,1");
+    $getTime = mysqli_query($connInFunc,"SELECT timer FROM questwalker.quest_list LIMIT $randomNum,1");
     questDataSet($randomNum,$getTime);
 
     $row = mysqli_fetch_assoc($result);
