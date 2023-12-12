@@ -74,12 +74,12 @@ $currentDate = date('Y-m-d');
 // $sessionDateに現在の日付を設定
 $sessionDate = $currentDate;
 
-// 前回の日付と異なる場合、クエストを変更し、タイマーをリセット
+/*// 前回の日付と異なる場合、クエストを変更し、タイマーをリセット
 if ($currentDate != $sessionDate) { //73行目で=にしているので動かない...?
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
     $_SESSION['current_date'] = $currentDate;
-}
+}*/
 
 
 // タイマーの初期値（秒単位）
