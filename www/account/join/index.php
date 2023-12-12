@@ -23,10 +23,10 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
 <body>
   <form method="post" action="process_form.php">
     <div>アカウント名</div>
-    <input pattern="^[a-zA-Z0-9ぁ-んーァ-ヶーｱ-ﾝﾞﾟ一-龠]+$" type="text" name="account_name"
+    <input pattern="^[a-zA-Z0-9ぁ-んーァ-ヶーｱ-ﾝﾞﾟ一-龠]+$" type="text" name="account_name" title="アカウント名に記号は入れることはできません。"
       value="<?php echo htmlspecialchars($accountName, ENT_QUOTES, 'UTF-8'); ?>" required>
     <div>ユーザーID</div>
-    <input pattern="^[a-zA-Z0-9]+$" type="text" name="account_id"
+    <input pattern="^[a-zA-Z0-9]+$" type="text" name="account_id" title="アカウントIDは英数字のみです"
       value="<?php echo htmlspecialchars($accountId, ENT_QUOTES, 'UTF-8'); ?>" required>
     <div>メールアドレス</div>
     <input type="email" name="mail_address" value="<?php echo htmlspecialchars($mailAddress, ENT_QUOTES, 'UTF-8'); ?>"
@@ -37,7 +37,7 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
     <div>パスワード</div>
     <input type="text" name="pass_wd" value="<?php echo htmlspecialchars($password1, ENT_QUOTES, 'UTF-8'); ?>" required>
     <div>パスワード確認</div>
-    <input type="text" name="pass_wd_confirm" value="<?php echo htmlspecialchars($password1, ENT_QUOTES, 'UTF-8'); ?>"
+    <input type="text" pattern=".{5,}" name="pass_wd_confirm" title="パスワードは5文字以上です" value="<?php echo htmlspecialchars($password1, ENT_QUOTES, 'UTF-8'); ?>"
       required>
 
     <div>性別</div>
