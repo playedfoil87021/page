@@ -34,10 +34,11 @@ function getRandomQuestFromDatabase($connInFunc)
     questDataSet($randomNum);
 
     $row = mysqli_fetch_assoc($result);
-    
+
     return $row['qu_name'];
 }
-function questDataSet($quest_id){
+function questDataSet($quest_id)
+{
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
     global $username;
     global $password;
@@ -48,6 +49,7 @@ function questDataSet($quest_id){
     $usr_id = 10;
     $quest_end = date("Y/m/d H:i:s", strtotime('600 sec'));
     $change_count = 0;
+    try {
         $sql = "INSERT INTO mission_tracker(user_id,quest_id,quest_end,change_count) VALUES (:user_id,:quest_id,:quest_end,:change_count)on duplicate key update quest_id = VALUES(quest_id), quest_end = VALUES(quest_end),change_count = VALUES(change_count);";
         $stmt = $PDO->prepare($sql);
         $stmt->bindParam(':user_id', $usr_id);
@@ -55,11 +57,10 @@ function questDataSet($quest_id){
         $stmt->bindParam(':quest_end', $quest_end);
         $stmt->bindParam(':change_count', $change_count);
         $stmt->execute();
-
-    /*} catch (PDOException $e) {
+    } catch (PDOException $e) {
         // エラーハンドリング：エラーが発生した場合にエラーメッセージを表示
         //exit('データベースエラー: ' . $e->getMessage());
-    }*/
+    }
 
 }
 
