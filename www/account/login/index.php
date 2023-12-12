@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['accountId'] = $inputAccountId;
       $_SESSION['accountname'] = $user1['account_name'];
       $_SESSION['accountmail'] = $user1['mail_address'];
+      $_SESSION['accountNumId'] = $user1['account_pk'];
 
       // ログイン中のユーザーを $_SESSION['userList'] に追加
       if (!isset($_SESSION['userList'])) {
