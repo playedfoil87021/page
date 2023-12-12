@@ -50,7 +50,7 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
       <input type="radio" name="gender" value="2" <?php if ($gender1=="2" ) echo 'checked' ?>required>その他
     </div>
     <div>
-      <input type="submit" value="入力内容確認" onclick="return confirmPassword();">
+      <input type="submit" value="入力内容確認" onclick="return confirmPasswd();">
     </div>
   </form>
   <a href="../login">アカウントをお持ちの方はこちら</a>
