@@ -29,14 +29,16 @@ function getRandomQuestFromDatabase($connInFunc)
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
         return false;
     }
-    $getTime = mysqli_query($connInFunc,"SELECT timer FROM questwalker.quest_list LIMIT $randomNum,1");
-    questDataSet($randomNum,$getTime);
+    $getTimeResult = mysqli_query($connInFunc, "SELECT timer FROM questwalker.quest_list LIMIT $randomNum,1");
+    $timeLimitRow = mysqli_fetch_assoc($getTimeResult);
+    $timeLimit = $timeLimitRow['timer'];
+    questDataSet($randomNum, $timeLimit);
 
     $row = mysqli_fetch_assoc($result);
 
     return $row['qu_name'];
 }
-function questDataSet($questId,$timeLimit)
+function questDataSet($questId, $timeLimit)
 {
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
     global $username;
