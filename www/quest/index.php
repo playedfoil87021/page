@@ -44,19 +44,20 @@ function questDataSet($questId, $timeLimit)
     global $username;
     global $password;
     $PDO = new PDO($dsn, $username, $password);
-
+    isset($_SESSION['change_count']) ? $_SESSION['change_count'] : 0;
     // エラーモードを設定
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $usrId = $_SESSION['accountNumId'];
     $questEnd = date("Y/m/d H:i:s", strtotime("$timeLimit sec"));
-    $changeCount = 0;
+    $changeCountFunc = $_SESSION['change_count'];
+
     try {
         $sql = "INSERT INTO mission_tracker(user_id,quest_id,quest_end,change_count) VALUES (:user_id,:quest_id,:quest_end,:change_count)on duplicate key update quest_id = VALUES(quest_id), quest_end = VALUES(quest_end),change_count = VALUES(change_count);";
         $stmt = $PDO->prepare($sql);
         $stmt->bindParam(':user_id', $usrId);
         $stmt->bindParam(':quest_id', $questId);
         $stmt->bindParam(':quest_end', $questEnd);
-        $stmt->bindParam(':change_count', $changeCount);
+        $stmt->bindParam(':change_count', $changeCountFunc);
         $stmt->execute();
     } catch (PDOException $e) {
         // エラーハンドリング：エラーが発生した場合にエラーメッセージを表示
@@ -74,7 +75,7 @@ $currentDate = date('Y-m-d');
 $sessionDate = $currentDate;
 
 // 前回の日付と異なる場合、クエストを変更し、タイマーをリセット
-if ($currentDate != $sessionDate) { //73行目で=にしているので動かない。
+if ($currentDate != $sessionDate) { //73行目で=にしているので動かない...?
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
     $_SESSION['current_date'] = $currentDate;
