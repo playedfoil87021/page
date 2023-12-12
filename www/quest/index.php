@@ -14,7 +14,6 @@ if (!$conn) {
 }
 
 session_start();
-echo $_SESSION['accountNumId'];
 function getRandomQuestFromDatabase($connInFunc)
 {
     //クエストの行数を取得
@@ -48,7 +47,7 @@ function questDataSet($questId, $timeLimit)
 
     // エラーモードを設定
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $usrId = 10;
+    $usrId = $_SESSION['accountNumId'];
     $questEnd = date("Y/m/d H:i:s", strtotime("$timeLimit sec"));
     $changeCount = 0;
     try {
