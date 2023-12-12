@@ -14,7 +14,6 @@ if (!$conn) {
 }
 
 session_start();
-echo $_SESSION['accountId'];
 function getRandomQuestFromDatabase($connInFunc)
 {
     //クエストの行数を取得
