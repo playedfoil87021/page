@@ -69,7 +69,7 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
       return false;
     }
   }
-    }
+    
 </Script>
 
 </html>
