@@ -18,10 +18,9 @@ session_start();
 function getRandomQuestFromDatabase($connInFunc)
 {
     //クエストの行数を取得
-    $rowCountSQL = 'SELECT * FROM questwalker.quest_list';
-    $rowCountResult = mysqli_num_rows(mysqli_query($connInFunc, $rowCountSQL));
+    $rowCount = mysqli_num_rows(mysqli_query($connInFunc, 'SELECT * FROM questwalker.quest_list'));
     //乱数をもとにクエストを決定
-    $randomNum = rand(0, $rowCountResult - 1);
+    $randomNum = rand(0, $rowCount - 1);
 
     //クエストを渡す
     $query = "SELECT qu_name FROM questwalker.quest_list LIMIT $randomNum,1";
@@ -37,7 +36,7 @@ function getRandomQuestFromDatabase($connInFunc)
 
     return $row['qu_name'];
 }
-function questDataSet($quest_id)
+function questDataSet($questId)
 {
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
     global $username;
@@ -46,16 +45,16 @@ function questDataSet($quest_id)
 
     // エラーモードを設定
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $usr_id = 10;
-    $quest_end = date("Y/m/d H:i:s", strtotime('600 sec'));
-    $change_count = 0;
+    $usrId = 10;
+    $questEnd = date("Y/m/d H:i:s", strtotime('600 sec'));
+    $changeCount = 0;
     try {
         $sql = "INSERT INTO mission_tracker(user_id,quest_id,quest_end,change_count) VALUES (:user_id,:quest_id,:quest_end,:change_count)on duplicate key update quest_id = VALUES(quest_id), quest_end = VALUES(quest_end),change_count = VALUES(change_count);";
         $stmt = $PDO->prepare($sql);
-        $stmt->bindParam(':user_id', $usr_id);
-        $stmt->bindParam(':quest_id', $quest_id);
-        $stmt->bindParam(':quest_end', $quest_end);
-        $stmt->bindParam(':change_count', $change_count);
+        $stmt->bindParam(':user_id', $usrId);
+        $stmt->bindParam(':quest_id', $questId);
+        $stmt->bindParam(':quest_end', $questEnd);
+        $stmt->bindParam(':change_count', $changeCount);
         $stmt->execute();
     } catch (PDOException $e) {
         // エラーハンドリング：エラーが発生した場合にエラーメッセージを表示
@@ -73,7 +72,7 @@ $currentDate = date('Y-m-d');
 $sessionDate = $currentDate;
 
 // 前回の日付と異なる場合、クエストを変更し、タイマーをリセット
-if ($currentDate != $sessionDate) {
+if ($currentDate != $sessionDate) { //73行目で=にしているので動かない。
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
     $_SESSION['current_date'] = $currentDate;
@@ -112,7 +111,7 @@ if (isset($_POST['resetQuest'])) {
 }
 
 
-if ($currentDate != $sessionDate) {
+if ($currentDate != $sessionDate) {  //73行目で=にしているので動かない。
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
 }
@@ -123,13 +122,13 @@ if (!isset($_SESSION['current_quest'])) {
 }
 
 // クエスト情報をセッションに保存
-if ($currentDate != $sessionDate) {
+if ($currentDate != $sessionDate) { //73行目で=にしているので動かない。
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
 }
 
 // タイマーをセッションに保存
-if ($currentDate != $sessionDate) {
+if ($currentDate != $sessionDate) { //73行目で=にしているので動かない。
     $_SESSION['timer'] = $initialTime; // タイマーを初期時間に戻す
 }
 
