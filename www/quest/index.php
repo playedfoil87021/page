@@ -1,5 +1,4 @@
 <?php
-echo $_SESSION['accountname'];
 // MySQLサーバーへの接続パラメータの設定
 $servername = "localhost:65233";
 $username = "root";
@@ -15,7 +14,7 @@ if (!$conn) {
 }
 
 session_start();
-
+echo $_SESSION['accountname'];
 function getRandomQuestFromDatabase($connInFunc)
 {
     //クエストの行数を取得
