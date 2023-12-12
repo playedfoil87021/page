@@ -21,6 +21,7 @@
   $phoneNumber = isset($_SESSION['phoneNumber']) ? $_SESSION['phoneNumber'] : '';
   $password1 = isset($_SESSION['password1']) ? $_SESSION['password1'] : '';
   $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
+  $numId = isset($_SESSION['accountNumId']) ? $_SESSION['accountNumId'] : '';
 
   try {
     // データベースに接続
