@@ -22,21 +22,21 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
 <body>
   <form method="post" action="process_form.php">
     <div>アカウント名</div>
-    <input pattern="^[a-zA-Z0-9]+$" type="text" name="account_name"
+    <input pattern="^[a-zA-Z0-9ぁ-んーァ-ヶーｱ-ﾝﾞﾟ一-龠]+$" type="text" name="account_name"
       value="<?php echo htmlspecialchars($accountName, ENT_QUOTES, 'UTF-8'); ?>">
     <div>ユーザーID</div>
     <input type="^[a-zA-Z0-9]+$" name="account_id"
       value="<?php echo htmlspecialchars($accountId, ENT_QUOTES, 'UTF-8'); ?>">
     <div>メールアドレス</div>
-    <input type="email" name="mail_address" value="<?php echo htmlspecialchars($mailAddress, ENT_QUOTES, 'UTF-8'); ?>">
+    <input type="email" name="mail_address" 
+      value="<?php echo htmlspecialchars($mailAddress, ENT_QUOTES, 'UTF-8'); ?>">
     <div>電話番号</div>
     <input type="tel" pattern="[0-9]{10,11}" name="phone_number"
       value="<?php echo htmlspecialchars($phoneNumber, ENT_QUOTES, 'UTF-8'); ?>">
     <div>パスワード</div>
     <input type="text" name="pass_wd" value="<?php echo htmlspecialchars($password1, ENT_QUOTES, 'UTF-8'); ?>">
     <div>パスワード確認</div>
-    <input type="text" name="pass_wd_confirm"
-      value="<?php echo htmlspecialchars($password1, ENT_QUOTES, 'UTF-8'); ?>">
+    <input type="text" name="pass_wd_confirm" value="<?php echo htmlspecialchars($password1, ENT_QUOTES, 'UTF-8'); ?>">
 
     <div>性別</div>
     <div>
@@ -57,5 +57,5 @@ $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
   </body>
 
   </html>
-  
+
   <!--     -->
