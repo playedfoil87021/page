@@ -31,13 +31,13 @@ function getRandomQuestFromDatabase($connInFunc)
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
         return false;
     }
-    appendDB();
+    questDataSet($randomNum);
 
     $row = mysqli_fetch_assoc($result);
     
     return $row['qu_name'];
 }
-function appendDB(){
+function questDataSet($quest_id){
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
     global $username;
     global $password;
@@ -46,8 +46,7 @@ function appendDB(){
     // エラーモードを設定
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $usr_id = 10;
-    $quest_id = 0;
-    $quest_end ="2022/03/01 00:11:22";
+    $quest_end = date("Y/m/d H:i:s", strtotime('600 sec'));
     $change_count = 0;
         $sql = "INSERT INTO mission_tracker(user_id,quest_id,quest_end,change_count) VALUES (:user_id,:quest_id,:quest_end,:change_count)on duplicate key update quest_id = VALUES(quest_id), quest_end = VALUES(quest_end),change_count = VALUES(change_count);";
         $stmt = $PDO->prepare($sql);
