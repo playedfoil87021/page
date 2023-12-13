@@ -44,12 +44,11 @@ function questDataSet($questId, $timeLimit)
     global $username;
     global $password;
     $PDO = new PDO($dsn, $username, $password);
-    isset($_SESSION['change_count']) ? $_SESSION['change_count'] : 0;
-    // エラーモードを設定
+    $changeCountInFunc = isset($_SESSION['change_count']) ? $_SESSION['change_count'] : 0;
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $usrId = $_SESSION['accountNumId'];
     $questEnd = date("Y/m/d H:i:s", strtotime("$timeLimit sec"));
-    $changeCountFunc = $_SESSION['change_count'];
+    //$changeCountInFunc = $_SESSION['change_count'];
 
     try {
         $sql = "INSERT INTO mission_tracker(user_id,quest_id,quest_end,change_count) VALUES (:user_id,:quest_id,:quest_end,:change_count)on duplicate key update quest_id = VALUES(quest_id), quest_end = VALUES(quest_end),change_count = VALUES(change_count);";
@@ -57,7 +56,7 @@ function questDataSet($questId, $timeLimit)
         $stmt->bindParam(':user_id', $usrId);
         $stmt->bindParam(':quest_id', $questId);
         $stmt->bindParam(':quest_end', $questEnd);
-        $stmt->bindParam(':change_count', $changeCountFunc);
+        $stmt->bindParam(':change_count', $changeCountInFunc);
         $stmt->execute();
     } catch (PDOException $e) {
         // エラーハンドリング：エラーが発生した場合にエラーメッセージを表示
