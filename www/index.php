@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./index.css">
     <link rel="shortcut icon" href="./img/favicon.ico">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 </head>
 <header><iframe src="./header/header.html" frameborder="0" width="100%" scrolling="no"></iframe></header>
 

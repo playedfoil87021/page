@@ -12,6 +12,8 @@
 
 <body>
   <header>
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
     <a href="../quest/index.php" target="_top">
       <h1>
         <img class="head_img" src="./img/hobbyconnect.png" alt="">
