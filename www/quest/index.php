@@ -9,31 +9,62 @@ $dbname = "questwalker";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // 接続エラーの確認
-if(!$conn) {
-    die("データベースへの接続に失敗しました: ".mysqli_connect_error());
+if (!$conn) {
+    die("データベースへの接続に失敗しました: " . mysqli_connect_error());
 }
 
 session_start();
-
-function getRandomQuestFromDatabase($connInFunc) {
+function getRandomQuestFromDatabase($connInFunc)
+{
     //クエストの行数を取得
-    $rowCountSQL = 'SELECT * FROM questwalker.quest_list';
-    $rowCountResult = mysqli_num_rows(mysqli_query($connInFunc, $rowCountSQL));
+    $rowCount = mysqli_num_rows(mysqli_query($connInFunc, 'SELECT * FROM questwalker.quest_list'));
     //乱数をもとにクエストを決定
-    $randomNum = rand(0, $rowCountResult - 1);
+    $randomNum = rand(0, $rowCount - 1);
 
     //クエストを渡す
     $query = "SELECT qu_name FROM questwalker.quest_list LIMIT $randomNum,1";
     $result = mysqli_query($connInFunc, $query);
 
-    if(!$result) {
+    if (!$result) {
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
         return false;
     }
+    $getTimeResult = mysqli_query($connInFunc, "SELECT timer FROM questwalker.quest_list LIMIT $randomNum,1");
+    $timeLimitRow = mysqli_fetch_assoc($getTimeResult);
+    $timeLimit = $timeLimitRow['timer'];
+    questDataSet($randomNum, $timeLimit);
 
     $row = mysqli_fetch_assoc($result);
+
     return $row['qu_name'];
-}//test
+}
+function questDataSet($questId, $timeLimit)
+{
+    $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
+    global $username;
+    global $password;
+    $PDO = new PDO($dsn, $username, $password);
+    isset($_SESSION['change_count']) ? $_SESSION['change_count'] : 0;
+    // エラーモードを設定
+    $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $usrId = $_SESSION['accountNumId'];
+    $questEnd = date("Y/m/d H:i:s", strtotime("$timeLimit sec"));
+    $changeCountFunc = $_SESSION['change_count'];
+
+    try {
+        $sql = "INSERT INTO mission_tracker(user_id,quest_id,quest_end,change_count) VALUES (:user_id,:quest_id,:quest_end,:change_count)on duplicate key update quest_id = VALUES(quest_id), quest_end = VALUES(quest_end),change_count = VALUES(change_count);";
+        $stmt = $PDO->prepare($sql);
+        $stmt->bindParam(':user_id', $usrId);
+        $stmt->bindParam(':quest_id', $questId);
+        $stmt->bindParam(':quest_end', $questEnd);
+        $stmt->bindParam(':change_count', $changeCountFunc);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // エラーハンドリング：エラーが発生した場合にエラーメッセージを表示
+        exit('データベースエラー: ' . $e->getMessage());
+    }
+
+}
 
 $sessionDate = null; // $sessionDateを宣言
 
@@ -43,27 +74,27 @@ $currentDate = date('Y-m-d');
 // $sessionDateに現在の日付を設定
 $sessionDate = $currentDate;
 
-// 前回の日付と異なる場合、クエストを変更し、タイマーをリセット
-if($currentDate != $sessionDate) {
+/*// 前回の日付と異なる場合、クエストを変更し、タイマーをリセット
+if ($currentDate != $sessionDate) { //73行目で=にしているので動かない...?
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
     $_SESSION['current_date'] = $currentDate;
-}
+}*/
 
 
 // タイマーの初期値（秒単位）
 $initialTime = 300;
 
 // セッションからタイマーの値を取得
-if(isset($_SESSION['timer'])) {
+if (isset($_SESSION['timer'])) {
     $timeLeft = $_SESSION['timer'];
 } else {
     $timeLeft = $initialTime;
 }
 
 // クエストが変更された場合
-if(isset($_POST['changeQuest'])) {
-    if($_SESSION['change_count'] < 5) { // 上限を5回に設定
+if (isset($_POST['changeQuest'])) {
+    if ($_SESSION['change_count'] < 5) { // 上限を5回に設定
         $timeLeft = $initialTime;
         $_SESSION['change_count']++; // 回数をカウントアップ
         $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
@@ -73,7 +104,7 @@ if(isset($_POST['changeQuest'])) {
 }
 
 // リセットボタンが押された場合
-if(isset($_POST['resetQuest'])) {
+if (isset($_POST['resetQuest'])) {
     $_SESSION['change_count'] = 0;
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['current_date'] = $currentDate;
@@ -83,28 +114,28 @@ if(isset($_POST['resetQuest'])) {
 }
 
 
-if($currentDate != $sessionDate) {
+if ($currentDate != $sessionDate) {  //73行目で=にしているので動かない。
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
 }
 
-if(!isset($_SESSION['current_quest'])) {
+if (!isset($_SESSION['current_quest'])) {
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
 }
 
 // クエスト情報をセッションに保存
-if($currentDate != $sessionDate) {
+if ($currentDate != $sessionDate) { //73行目で=にしているので動かない。
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
 }
 
 // タイマーをセッションに保存
-if($currentDate != $sessionDate) {
+if ($currentDate != $sessionDate) { //73行目で=にしているので動かない。
     $_SESSION['timer'] = $initialTime; // タイマーを初期時間に戻す
 }
 
-$initialTime = $_SESSION['timer'];
+//$initialTime = $_SESSION['timer'];
 $timeLeft = $initialTime;
 
 $changeCount = $_SESSION['change_count'];
@@ -112,7 +143,7 @@ $maxChangeCount = 5;
 $isButtonDisabled = ($changeCount >= $maxChangeCount);
 $currentQuest = $_SESSION['current_quest'];
 
-if($changeCount >= 5) {
+if ($changeCount >= 5) {
     $isButtonDisabled = true; // ボタンを無効にするフラグを設定
 }
 
@@ -170,7 +201,7 @@ mysqli_close($conn);
             <input type="submit" name="changeQuest" value="クエストを変更する" id="changeButton">
         </form>
         <?php
-        if($changeCount >= 5) {
+        if ($changeCount >= 5) {
             echo "<p>変更回数の上限に達しました。</p>";
         }
         ?>
@@ -190,7 +221,7 @@ mysqli_close($conn);
         var isButtonDisabled = <?php echo $isButtonDisabled ? 'true' : 'false'; ?>;
 
         // セッションから残り時間を取得
-        var timeLeft = <?php echo $timeLeft; ?>;
+        var timeLeft = 0;
 
         // ページが読み込まれたときにタイマーを設定
         document.addEventListener('DOMContentLoaded', function () {
@@ -238,8 +269,6 @@ mysqli_close($conn);
         if (isButtonDisabled) {
             document.getElementById('changeButton').disabled = true;
         }
-
-
     </script>
 
 </body>

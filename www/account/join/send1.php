@@ -21,6 +21,7 @@
   $phoneNumber = isset($_SESSION['phoneNumber']) ? $_SESSION['phoneNumber'] : '';
   $password1 = isset($_SESSION['password1']) ? $_SESSION['password1'] : '';
   $gender1 = isset($_SESSION['gender1']) ? $_SESSION['gender1'] : '';
+  $numId = isset($_SESSION['accountNumId']) ? $_SESSION['accountNumId'] : '';
 
   try {
     // データベースに接続
@@ -48,7 +49,8 @@
 */
 
     // SQLクエリを作成し、データを挿入
-    $sql = "INSERT INTO acount_list (account_pk,account_name, account_id, mail_address, phone_number, pass_wd, gender) VALUES (:account_pk,:account_name, :account_id, :mail_address, :phone_number, :pass_wd, :gender)";
+    $sql = "INSERT INTO acount_list (account_pk,account_name, account_id, mail_address, phone_number, pass_wd, gender) 
+            VALUES (:account_pk,:account_name, :account_id, :mail_address, :phone_number, :pass_wd, :gender)";
     $stmt = $PDO->prepare($sql);
     $stmt->bindParam(':account_pk', $count_num);
     $stmt->bindParam(':account_name', $accountName);
