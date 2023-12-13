@@ -73,7 +73,7 @@ $currentDate = date('Y-m-d');
 // $sessionDateに現在の日付を設定
 $sessionDate = $currentDate;
 
-/*// 前回の日付と異なる場合、クエストを変更し、タイマーをリセット
+// 前回の日付と異なる場合、クエストを変更し、タイマーをリセット
 if ($currentDate != $sessionDate) { //73行目で=にしているので動かない...?
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
@@ -89,7 +89,7 @@ if (isset($_SESSION['timer'])) {
     $timeLeft = $_SESSION['timer'];
 } else {
     $timeLeft = $initialTime;
-}*/
+}
 
 // クエストが変更された場合
 if (isset($_POST['changeQuest'])) {
@@ -113,7 +113,7 @@ if (isset($_POST['resetQuest'])) {
 }
 
 
-/*if ($currentDate != $sessionDate) {  //73行目で=にしているので動かない。
+if ($currentDate != $sessionDate) {  //73行目で=にしているので動かない。
     $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
     $_SESSION['change_count'] = 0;
 }
@@ -140,7 +140,7 @@ $timeLeft = $initialTime;
 $changeCount = $_SESSION['change_count'];
 $maxChangeCount = 5;
 $isButtonDisabled = ($changeCount >= $maxChangeCount);
-$currentQuest = $_SESSION['current_quest'];*/
+$currentQuest = $_SESSION['current_quest'];
 
 if ($changeCount >= 5) {
     $isButtonDisabled = true; // ボタンを無効にするフラグを設定
