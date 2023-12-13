@@ -48,7 +48,6 @@ function questDataSet($questId, $timeLimit)
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $usrId = $_SESSION['accountNumId'];
     $questEnd = date("Y/m/d H:i:s", strtotime("$timeLimit sec"));
-    //$changeCountInFunc = $_SESSION['change_count'];
 
     try {
         $sql = "INSERT INTO mission_tracker(user_id,quest_id,quest_end,change_count) VALUES (:user_id,:quest_id,:quest_end,:change_count)on duplicate key update quest_id = VALUES(quest_id), quest_end = VALUES(quest_end),change_count = VALUES(change_count);";
@@ -65,31 +64,6 @@ function questDataSet($questId, $timeLimit)
 
 }
 
-$sessionDate = null; // $sessionDateを宣言
-
-// 現在の日付を取得
-$currentDate = date('Y-m-d');
-
-// $sessionDateに現在の日付を設定
-$sessionDate = $currentDate;
-
-/*// 前回の日付と異なる場合、クエストを変更し、タイマーをリセット
-if ($currentDate != $sessionDate) { //73行目で=にしているので動かない...?
-    $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
-    $_SESSION['change_count'] = 0;
-    $_SESSION['current_date'] = $currentDate;
-}
-
-
-// タイマーの初期値（秒単位）
-$initialTime = 300;
-
-// セッションからタイマーの値を取得
-if (isset($_SESSION['timer'])) {
-    $timeLeft = $_SESSION['timer'];
-} else {
-    $timeLeft = $initialTime;
-}*/
 
 // クエストが変更された場合
 if (isset($_POST['changeQuest'])) {
@@ -112,36 +86,6 @@ if (isset($_POST['resetQuest'])) {
     echo "<script>localStorage.setItem('remainingTime', $timeLeft);</script>";
 }
 
-
-/*if ($currentDate != $sessionDate) {  //73行目で=にしているので動かない。
-    $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
-    $_SESSION['change_count'] = 0;
-}
-
-if (!isset($_SESSION['current_quest'])) {
-    $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
-    $_SESSION['change_count'] = 0;
-}
-
-// クエスト情報をセッションに保存
-if ($currentDate != $sessionDate) { //73行目で=にしているので動かない。
-    $_SESSION['current_quest'] = getRandomQuestFromDatabase($conn);
-    $_SESSION['change_count'] = 0;
-}
-
-// タイマーをセッションに保存
-if ($currentDate != $sessionDate) { //73行目で=にしているので動かない。
-    $_SESSION['timer'] = $initialTime; // タイマーを初期時間に戻す
-}
-
-//$initialTime = $_SESSION['timer'];
-$timeLeft = $initialTime;
-
-$changeCount = $_SESSION['change_count'];
-$maxChangeCount = 5;
-$isButtonDisabled = ($changeCount >= $maxChangeCount);
-$currentQuest = $_SESSION['current_quest'];*/
-
 if ($changeCount >= 5) {
     $isButtonDisabled = true; // ボタンを無効にするフラグを設定
 }
@@ -162,28 +106,6 @@ mysqli_close($conn);
 <header><iframe src="../header/header1.php" frameborder="0" width="100%" scrolling="no"></iframe></header>
 
 <body>
-    <!--<div class="status">
-        <p class="name">char_name</p>
-        <img src="./img/rh.png" alt="" class="hp">
-        <p class="hp_val">0</p>
-        <img src="./img/rh.png" alt="" class="power">
-        <p class="power_val">0</p>
-        <img src="./img/rh.png" alt="" class="fast">
-        <p class="fast_val">0</p>
-        <img src="./img/rh.png" alt="" class="know">
-        <p class="know_val">0</p>
-    </div>
-    <div class="level">
-        <p class="level_txt">レベル:
-        <div class="level_val">0</div>
-        </p>
-        <p class="next_level_txt">次のレベルまであと
-        <div class="next_level_val">0</div>
-        </p>
-    </div>
-    <div class="char_img">
-        <img src="./img/no_image.jpg" alt="">
-    </div>-->
     <div class="quest">
         <h1>現在のクエスト:
             <?php echo $currentQuest; ?>
