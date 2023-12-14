@@ -50,7 +50,14 @@ function questDataSet($questId, $timeLimit)
     $questEnd = date("Y/m/d H:i:s", strtotime("$timeLimit sec"));
 
     try {
-        $sql = "INSERT INTO mission_tracker(user_id,quest_id,quest_end,change_count) VALUES (:user_id,:quest_id,:quest_end,:change_count)on duplicate key update quest_id = VALUES(quest_id), quest_end = VALUES(quest_end),change_count = VALUES(change_count);";
+        $sql = "INSERT INTO mission_tracker(
+                    user_id,quest_id,quest_end,change_count
+                ) VALUES (
+                    :user_id,:quest_id,:quest_end,:change_count
+                )on duplicate key update 
+                    quest_id = VALUES(quest_id), 
+                    quest_end = VALUES(quest_end),
+                    change_count = VALUES(change_count);";
         $stmt = $PDO->prepare($sql);
         $stmt->bindParam(':user_id', $usrId);
         $stmt->bindParam(':quest_id', $questId);
@@ -122,7 +129,7 @@ mysqli_close($conn);
             <input type="submit" name="changeQuest" value="クエストを変更する" id="changeButton">
         </form>
         <?php
-        if ($changeCount >= 5){ //現在未定義
+        if ($changeCount >= 5) { //現在未定義
             echo "<p>変更回数の上限に達しました。</p>";
         }
         ?>
