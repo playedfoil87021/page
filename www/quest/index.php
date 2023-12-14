@@ -93,8 +93,8 @@ if (isset($_POST['resetQuest'])) {
     echo "<script>localStorage.setItem('remainingTime', $timeLeft);</script>";
 }
 
-if ($changeCount >= 5) { //現在未定義
-    $isButtonDisabled = true; // ボタンを無効にするフラグを設定
+if ($changeCount >= 5) { //!現在未定義
+    $isButtonDisabled = true; //ボタンを無効にするフラグを設定 
 }
 
 mysqli_close($conn);
@@ -115,11 +115,11 @@ mysqli_close($conn);
 <body>
     <div class="quest">
         <h1>現在のクエスト:
-            <?php echo $currentQuest; ?> <!--現在未定義-->
+            <?php echo $currentQuest; ?> <!--//!現在未定義-->
         </h1>
         <p>変更回数:
-            <?php echo $changeCount; ?>/<!--現在未定義-->
-            <?php echo $maxChangeCount; ?><!--現在未定義-->
+            <?php echo $changeCount; ?>/<!--//!現在未定義-->
+            <?php echo $maxChangeCount; ?><!--//!現在未定義-->
         </p>
         <form method="post" action="">
             <p>↓デバッグ用</p>
@@ -129,7 +129,7 @@ mysqli_close($conn);
             <input type="submit" name="changeQuest" value="クエストを変更する" id="changeButton">
         </form>
         <?php
-        if ($changeCount >= 5) { //現在未定義
+        if ($changeCount >= 5) { //!現在未定義
             echo "<p>変更回数の上限に達しました。</p>";
         }
         ?>
