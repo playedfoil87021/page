@@ -141,7 +141,7 @@ mysqli_close($conn);
     <p>残り時間</p>
     <div id="timerCountdown" class="timer">
 
-        <span id="timer">05:00</span>
+        <span id="timer">00:00</span>
     </div>
     <script src="timer.js"></script>
     <script>
