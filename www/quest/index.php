@@ -67,7 +67,7 @@ function questDataSet($questId, $timeLimit)
     }
 
 }
-//クエスト変更（制限）
+//クエスト変更（制限）a
 
 //タイマー
 
