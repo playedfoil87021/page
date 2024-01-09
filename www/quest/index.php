@@ -88,6 +88,10 @@ function questDataSet($questId, $timeLimit)
 <header><iframe src="../header/header1.php" frameborder="0" width="100%" scrolling="no"></iframe></header>
 <body>
     <p>本日のクエストはこちら！！</p>
+    <?php 
+    global  $result;
+    echo  $result;
+     ?>
 
     <p>終了時間</P>
 
