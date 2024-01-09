@@ -1,3 +1,4 @@
+<?php
 function questDataSet($questId, $timeLimit)
 {
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
@@ -30,3 +31,4 @@ function questDataSet($questId, $timeLimit)
     }
 
 }
+?>
