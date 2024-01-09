@@ -39,6 +39,8 @@ function getRandomQuestFromDatabase($connInFunc)
 
     return $row['qu_name'];
 }
+
+//今この人が受けてるぜ
 function questDataSet($questId, $timeLimit)
 {
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
