@@ -91,7 +91,8 @@ function questDataSet($questId, $timeLimit)
     <?php 
     global  $result;
     echo  $result;
-     ?>
+    echo "hoge";
+    ?>
 
     <p>終了時間</P>
 
