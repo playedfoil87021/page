@@ -12,6 +12,13 @@
 </head>
 <header><iframe src="../header/header1.php" frameborder="0" width="100%" scrolling="no"></iframe></header>
 <body>
+    <p>本日のクエストはこちら！！</p>
+
+    <p>終了時間</P>
+
+    <p>達成報告</p>
+
+    <p>あきらめる</p>
 
 </body>
 </html>
