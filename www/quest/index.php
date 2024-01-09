@@ -36,3 +36,12 @@ function questDataSet($questId, $timeLimit)
 
 }
 ?>
+
+<html>
+<head>
+
+</head>
+<body>
+
+</body>
+</html>
