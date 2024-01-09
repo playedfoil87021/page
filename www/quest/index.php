@@ -65,9 +65,13 @@ function questDataSet($questId, $timeLimit)
         $stmt->bindParam(':quest_id', $questId);
 
     }
+    catch (PDOException $e) {
+        echo "データベースエラー: " . $e->getMessage();
+        exit();
+    }
 
 }
-//クエスト変更（制限）a
+//クエスト変更（制限）
 
 //タイマー
 
