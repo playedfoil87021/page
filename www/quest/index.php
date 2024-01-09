@@ -7,30 +7,30 @@ $password = "P2L13foJQeebl3Jl";
 $dbname = "questwalker";
 
 // MySQLデータベースに接続
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$qw_connect = mysqli_connect($servername, $username, $password, $dbname);
 
 // 接続エラーの確認
-if (!$conn) {
+if (!$qw_connect) {
     die("データベースへの接続に失敗しました: " . mysqli_connect_error());
 }
 //クエストランダム
 session_start();
-function getRandomQuestFromDatabase($connInFunc)
+function getRandomQuestFromDatabase($qw_connectInFunc)
 {
     //クエストの行数を取得
-    $rowCount = mysqli_num_rows(mysqli_query($connInFunc, 'SELECT * FROM questwalker.quest_list'));
+    $rowCount = mysqli_num_rows(mysqli_query($qw_connectInFunc, 'SELECT * FROM questwalker.quest_list'));
     //乱数をもとにクエストを決定
     $randomNum = rand(0, $rowCount - 1);
 
     //クエストを渡す
     $query = "SELECT qu_name FROM questwalker.quest_list LIMIT $randomNum,1";
-    $result = mysqli_query($connInFunc, $query);
+    $result = mysqli_query($qw_connectInFunc, $query);
 
     if (!$result) {
         // クエリの実行に失敗した場合、エラー処理を行う代わりに false を返す
         return false;
     }
-    $getTimeResult = mysqli_query($connInFunc, "SELECT timer FROM questwalker.quest_list LIMIT $randomNum,1");
+    $getTimeResult = mysqli_query($qw_connectInFunc, "SELECT timer FROM questwalker.quest_list LIMIT $randomNum,1");
     $timeLimitRow = mysqli_fetch_assoc($getTimeResult);
     $timeLimit = $timeLimitRow['timer'];
     questDataSet($randomNum, $timeLimit);
