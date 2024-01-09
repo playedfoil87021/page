@@ -90,8 +90,7 @@ function questDataSet($questId, $timeLimit)
     <p>本日のクエストはこちら！！</p>
     <?php 
     global $result;
-    echo  $result;
-    echo "hoge";
+    echo  "<p>$result</p>";
     ?>
 
     <p>終了時間</P>
