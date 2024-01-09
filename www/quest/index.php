@@ -1,4 +1,8 @@
 <?php
+$servername = "localhost:65233";
+$username = "root";
+$password = "P2L13foJQeebl3Jl";
+$dbname = "questwalker";
 function questDataSet($questId, $timeLimit)
 {
     $dsn = 'mysql:dbname=questwalker;host=localhost:65233;charset=utf8';
